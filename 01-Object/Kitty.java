@@ -9,4 +9,10 @@ public class Kitty {
     name = "Mittens";
     age = 2
   }
+  public int getAge(){
+    return age;
+  }
+  public String getName(){
+    return name;
+  }
 }
