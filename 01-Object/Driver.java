@@ -8,7 +8,7 @@ public class Driver{
     //this constructor takes no parameters.
 
     System.out.println(a);
-    //should print The address. Later it will print "The amazing Katya."
+    //should print The address. Later it will print "The amazing Matcha."
 
     System.out.println(b);
     //should print The address. Later it will print "The amazing Mittens"
