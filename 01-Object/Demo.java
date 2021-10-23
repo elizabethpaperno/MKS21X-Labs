@@ -12,5 +12,20 @@ public class Demo{
     System.out.println(  P1.distanceTo(P2)); //call 3
     //This one is IMPLIED strongly. You cannot tell by the calling style alone,
     //but you can make an educated guess.
+
+    Point P3 = new Point(-3.12,4);
+    Point P4 = new Point(7,8.34);
+    //distance is 10.011...
+    System.out.println(distance(P3,P4));
+    System.out.println(Point.distance(P3,P4));
+    System.out.println(P3.distanceTo(P4));
+
+    Point P5 = new Point(1.5,1.5);
+    Point P6 = new Point(1.5,1.5);
+    //distance is 0
+    System.out.println(distance(P5,P6));
+    System.out.println(Point.distance(P5,P6));
+    System.out.println(P5.distanceTo(P6));
+
   }
  }
