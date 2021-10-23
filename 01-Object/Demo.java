@@ -1,6 +1,8 @@
 public class Demo{
   /* more methods can go here*/
-
+  public static void distance(Point P1, Point P2){
+    return Math.sqrt(Math.pow(P1.getX() - P2.getX(),2) + Math.pow(P1.getY() - P2.getY(),2));
+  }
   public static void main(String[]args){
     Point P1 = new Point(1,1);
     Point P2 = new Point(2,2);
