@@ -15,7 +15,7 @@ public class Demo{
 
     Point P3 = new Point(-3.12,4);
     Point P4 = new Point(7,8.34);
-    //distance is 10.011...
+    //distance is 11.011...
     System.out.println(distance(P3,P4));
     System.out.println(Point.distance(P3,P4));
     System.out.println(P3.distanceTo(P4));
