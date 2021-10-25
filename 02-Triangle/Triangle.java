@@ -11,4 +11,15 @@ public class Triangle {
     v2 = Point(v2x, v2y);
     v3 = Point(v3x, v3y);
   }
+
+  public Point getVertex(int num){
+    if (num == 1){
+      return v1;
+    }else if (num == 2)_{
+      return v2;
+    }else {
+      //assuming valid input of 1, 2, or 3
+      return v3;
+    }
+  }
 }
