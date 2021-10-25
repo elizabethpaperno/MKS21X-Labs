@@ -33,6 +33,10 @@ public class Triangle {
     }
   }
 
+  public double getPerimeter(){
+    return v1.distanceTo(v2) + v2.distanceTo(v3) + v3.distanceTo(v1);
+  }
+
   public String toString(){
     return "{" + v1.toString() + ", " + v2.toString() + ", "  +  v3.toString() + "}";
   }
