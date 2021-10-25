@@ -22,4 +22,14 @@ public class Triangle {
       return v3;
     }
   }
+  public void setVertex(int num,Point p){
+    if (num == 1){
+      v1 = p;
+    }else if (num == 2)_{
+      v2 = p;
+    }else {
+      //assuming valid input of 1, 2, or 3
+      v3 = p;
+    }
+  }
 }
