@@ -23,4 +23,7 @@ public class Point{
     return Math.sqrt(Math.pow(P1.x - P2.x,2) + Math.pow(P1.y - P2.y,2));
   }
 
+  public String toString(){
+    return "("+ x + ", " + y + ")";
+  }
 }
