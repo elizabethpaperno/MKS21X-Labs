@@ -32,4 +32,8 @@ public class Triangle {
       v3 = p;
     }
   }
+
+  public String toString(){
+    return "{" + v1.toString() + ", " + v2.toString() + ", "  +  v3.toString() + "}";
+  }
 }
