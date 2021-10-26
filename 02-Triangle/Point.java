@@ -31,7 +31,11 @@ public class Point{
     if (a == 0.0 || b == 0.0) {
       return (a == 0.0 && b == 0.0);
     }else{
-      return (Math.abs((a-b)/a)* 100 <= .001);
+      return (Math.abs((a-b)/a)* 100 < .001);
     }
+  }
+
+  public boolean equals(Point other){
+    return (closeEnough(x,other.x) && closeEnough(y,other.y));
   }
 }
