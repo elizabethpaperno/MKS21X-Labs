@@ -23,5 +23,10 @@ public class Driver {
     Triangle1.setVertex(2, p);
     System.out.println(Triangle1.getVertex(2)); //(0.0,1.0)
 
+    System.out.println(Point.closeEnough(100.0, 99.9999));//true
+    System.out.println(Point.closeEnough(200.0, 99.9999)); //false
+    System.out.println(Point.closeEnough(0.00001, 0.0000099999)); //true
+    System.out.println(Point.closeEnough(0.0, 0.0));//true
+    System.out.println(Point.closeEnough(0.0, 5.0));//false
   }
 }
