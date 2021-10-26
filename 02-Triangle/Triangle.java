@@ -7,15 +7,15 @@ public class Triangle {
   }
 
   public Triangle(double v1x, double v1y, double v2x, double v2y, double v3x, double v3y){
-    v1 = Point(v1x, v1y);
-    v2 = Point(v2x, v2y);
-    v3 = Point(v3x, v3y);
+    v1 = new Point(v1x, v1y);
+    v2 = new Point(v2x, v2y);
+    v3 = new Point(v3x, v3y);
   }
 
   public Point getVertex(int num){
     if (num == 1){
       return v1;
-    }else if (num == 2)_{
+    }else if (num == 2){
       return v2;
     }else {
       //assuming valid input of 1, 2, or 3
@@ -25,7 +25,7 @@ public class Triangle {
   public void setVertex(int num,Point p){
     if (num == 1){
       v1 = p;
-    }else if (num == 2)_{
+    }else if (num == 2){
       v2 = p;
     }else {
       //assuming valid input of 1, 2, or 3
