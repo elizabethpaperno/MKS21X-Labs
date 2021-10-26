@@ -26,5 +26,12 @@ public class Point{
   public String toString(){
     return "("+ x + ", " + y + ")";
   }
-}
 
+  public static boolean closeEnough(double a, double b){
+    if (a == 0.0 || b == 0.0) {
+      return (a == 0.0 && b == 0.0);
+    }else{
+      return (Math.abs((a-b)/a)* 100 <= .001);
+    }
+  }
+}

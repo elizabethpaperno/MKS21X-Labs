@@ -40,4 +40,12 @@ public class Triangle {
   public String toString(){
     return "{" + v1.toString() + ", " + v2.toString() + ", "  +  v3.toString() + "}";
   }
+
+  public static boolean closeEnough(double a, double b){
+    if (a == 0.0 || b == 0.0) {
+      return (a == 0.0 && b == 0.0);
+    }else{
+      return (Math.abs((a-b)/a)* 100 < .001);
+    }
+  }
 }
