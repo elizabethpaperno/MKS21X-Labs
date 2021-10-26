@@ -48,4 +48,16 @@ public class Triangle {
       return (Math.abs((a-b)/a)* 100 < .001);
     }
   }
+
+  public boolean equals(Triangle other){
+    return(v1.equals(other.v1) && v2.equals(other.v2) && v3.equals(other.v3));
+  }
+
+  public String classify(){
+    return "";
+  }
+
+  public double area(){
+    return 0.0;
+  }
 }
