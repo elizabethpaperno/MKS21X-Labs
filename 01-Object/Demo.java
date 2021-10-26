@@ -27,5 +27,7 @@ public class Demo{
     System.out.println(Point.distance(P5,P6));
     System.out.println(P5.distanceTo(P6));
 
+    System.out.println(P6); //testing toString() -> should return (1.5, 1.5)
+
   }
  }
