@@ -50,29 +50,25 @@ public class Triangle {
   }
 
   public boolean equals(Triangle other){
-    return(v1.equals(other.v1) && v2.equals(other.v2) && v3.equals(other.v3));
+    if (other != null){
+      return(v1.equals(other.v1) && v2.equals(other.v2) && v3.equals(other.v3));
+    } else {
+      return false;
+    }
   }
 
   public String classify(){
     int numSidesEqual = 0;
-    if (Triangle.closeEnough(v1.distanceTo(v2),v2.distanceTo(v3))){
-      numSidesEqual += 1;
-    }
-    if (Triangle.closeEnough(v2.distanceTo(v3),v3.distanceTo(v1))){
-      numSidesEqual += 1;
-    }
-    if (Triangle.closeEnough(v1.distanceTo(v2),v3.distanceTo(v1))){
-      numSidesEqual += 1;
-    }
-
-    if (numSidesEqual == 0) {
+    double s1 = v1.distanceTo(v2);
+    double s2 = v2.distanceTo(v3);
+    double s3 = v3.distanceTo(v1);
+    if (!(closeEnough(s1,s2)||closeEnough(s2,s3)||closeEnough(s1,s3))){
       return "scalene";
-    } else if (numSidesEqual == 1){
-      return "isoceles";
-    } else if (numSidesEqual >= 2){
+    }else if (closeEnough(s1,s2) && closeEnough(s2,s3) && closeEnough(s1,s3)){
       return "equilateral";
+    }else{
+      return "isoceles";
     }
-    return "";
   }
 
   public double area(){
