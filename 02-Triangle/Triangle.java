@@ -54,10 +54,29 @@ public class Triangle {
   }
 
   public String classify(){
+    int numSidesEqual = 0;
+    if (Triangle.closeEnough(v1.distanceTo(v2),v2.distanceTo(v3))){
+      numSidesEqual += 1;
+    }
+    if (Triangle.closeEnough(v2.distanceTo(v3),v3.distanceTo(v1))){
+      numSidesEqual += 1;
+    }
+    if (Triangle.closeEnough(v1.distanceTo(v2),v3.distanceTo(v1))){
+      numSidesEqual += 1;
+    }
+
+    if (numSidesEqual == 0) {
+      return "scalene";
+    } else if (numSidesEqual == 1){
+      return "isoceles";
+    } else if (numSidesEqual >= 2){
+      return "equilateral";
+    }
     return "";
   }
 
   public double area(){
-    return 0.0;
+    double s = getPerimeter()/2;
+    return Math.sqrt(s * (s - v1.distanceTo(v2)) * (s-v2.distanceTo(v3)) * (s-v3.distanceTo(v1)));
   }
 }
