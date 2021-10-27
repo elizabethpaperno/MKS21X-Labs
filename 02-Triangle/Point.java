@@ -36,6 +36,10 @@ public class Point{
   }
 
   public boolean equals(Point other){
-    return (closeEnough(x,other.x) && closeEnough(y,other.y));
+    if (other != null){
+      return (closeEnough(x,other.x) && closeEnough(y,other.y));
+    } else {
+      return false;
+    }
   }
 }
