@@ -44,7 +44,7 @@ public class Driver {
     Triangle isoceles1 = new Triangle(5.0,4.0,2.0,0.0,-2.0,3.0);
     System.out.println(isoceles1.classify()); //isoceles
 
-    Triangle equi1 = new Triangle(0.0,0.0,0.0,6.0,3.0,3.0 * Math.sqrt(3.0));
+    Triangle equi1 = new Triangle(0.0,0.0,2.0,0.0,1.0, Math.sqrt(3));
     System.out.println(equi1.classify()); //equilateral
 
     Triangle TriangleA = new Triangle(-1.0,2.0,2.0,3.0,4.0,-3.0);
