@@ -73,9 +73,6 @@ public class Triangle {
 
   public double area(){
     double s = getPerimeter()/2.0;
-    System.out.println(v1.distanceTo(v2));
-    System.out.println(v2.distanceTo(v3));
-    System.out.println(v3.distanceTo(v1));
     return Math.sqrt(s * (s - v1.distanceTo(v2)) * (s-v2.distanceTo(v3)) * (s-v3.distanceTo(v1)));
   }
 }
