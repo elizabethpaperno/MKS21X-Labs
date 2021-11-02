@@ -23,9 +23,12 @@ public class Driver {
     System.out.println(frac1.reciprocal()); // 3/1
     System.out.println(frac2.reciprocal()); // 6/5
     System.out.println(frac1.multiply(frac2)); // 5/18
-    //System.out.println(frac1.divide(frac2)); // 6/15
+    System.out.println(frac1.divide(frac2)); // 2/5
     System.out.println(frac1.add(frac2)); // 7/6
-    System.out.println(frac1.subtract(frac2)); // -3/6
-
+    System.out.println(frac1.subtract(frac2)); // 1/-2
+    System.out.println(frac1.equals(frac2)); //false
+    
+    RationalNumber frac3 = new RationalNumber(1,3);
+    System.out.println(frac1.equals(frac3)); //true
   }
 }
