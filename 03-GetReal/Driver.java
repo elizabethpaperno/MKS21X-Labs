@@ -41,5 +41,8 @@ public class Driver {
     System.out.println(frac4.add(frac2)); // 1/2
     System.out.println(frac4.subtract(frac2)); // -7/6
     System.out.println(frac4.equals(frac2)); //false
+
+    RationalNumber frac5 = new RationalNumber(5,0);
+    System.out.println(frac5); // 0/1
   }
 }
