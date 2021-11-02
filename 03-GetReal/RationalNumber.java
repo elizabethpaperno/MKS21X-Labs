@@ -93,19 +93,25 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    return null;
+    recip = other.reciprocal();
+    new RationalNumber quo = RationalNumber(this.numerator * recip.numerator, this.denominator * recip.denominator);
+    return quo.reduce();
   }
 
   /**
   *Return a new RationalNumber that is the sum of this and the other
   */
   public RationalNumber add(RationalNumber other){
-    return null;
+    gcd = RationalNumber.gcd(this.denominator, other.denominator);
+    new RationalNumber sum = RationalNumber(gcd/this.denominator*this.numerator + gcd/other.denominator*other.numerator, gcd);
+    return sum.reduce();
   }
   /**
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    gcd = RationalNumber.gcd(this.denominator, other.denominator);
+    new RationalNumber diff = RationalNumber(gcd/this.denominator*this.numerator - gcd/other.denominator*other.numerator, gcd);
+    return sum.diff();
   }
 }
