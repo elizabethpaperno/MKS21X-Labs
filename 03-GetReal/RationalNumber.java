@@ -77,14 +77,16 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-
+    numerator /= gcd;
+    denominator /= gcd;
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    return null;
+    new RationalNumber newNum = RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
+    return newNum.reduce();
   }
 
   /**
