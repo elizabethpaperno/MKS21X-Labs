@@ -116,8 +116,8 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    int gcd = RationalNumber.gcd(this.denominator, other.denominator);
-    RationalNumber diff = new RationalNumber(gcd/this.denominator*this.numerator - gcd/other.denominator*other.numerator, gcd);
+    int lcm = (this.denominator * other.denominator)/RationalNumber.gcd(this.denominator, other.denominator);
+    RationalNumber diff = new RationalNumber(((lcm / this.denominator) * this.numerator) - ((lcm / other.denominator) * other.numerator), lcm);
     diff.reduce();
     return diff;
   }
