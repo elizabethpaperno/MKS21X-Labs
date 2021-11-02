@@ -40,10 +40,10 @@ public class RealNumber{
 
 
   public double getValue(){
-    return value.getValue();
+    return value;
   }
 
   public String toString(){
-    return ""+value.getValue();
+    return ""+value;
   }
 }
