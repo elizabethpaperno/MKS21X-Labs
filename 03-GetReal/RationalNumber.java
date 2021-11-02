@@ -9,7 +9,7 @@ public class RationalNumber extends RealNumber
   */
   public RationalNumber(int nume, int deno){
     super(0.0);//this value is ignored!
-    numerator = nume; 
+    numerator = nume;
     denominator = deno;
   }
 
@@ -64,7 +64,11 @@ public class RationalNumber extends RealNumber
   private static int gcd(int a, int b){
     /*use euclids method or a better one*/
     //http://sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
-    return 0;
+    if (b != 0){
+      a = b;
+      b = a % b;
+    }
+    return a;
   }
 
   /**
@@ -102,4 +106,4 @@ public class RationalNumber extends RealNumber
   public RationalNumber subtract(RationalNumber other){
     return null;
   }
-} 
+}
