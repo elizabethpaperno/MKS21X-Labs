@@ -85,8 +85,8 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    new RationalNumber newNum = RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
-    return newNum.reduce();
+    new RationalNumber product = RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
+    return product.reduce();
   }
 
   /**
