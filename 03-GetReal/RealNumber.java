@@ -5,6 +5,16 @@ public class RealNumber{
     value = v;
   }
 
+  public int compareTo(RealNumber other){
+    return (int)(this.getValue() - other.getValue());
+  }
+
+  public boolean equals(RealNumber other){
+    if (other != null){
+      return (other.getValue()==this.getValue());
+    }
+    return false;
+  }
   /*
   *Return the sum of this and the other
   */
