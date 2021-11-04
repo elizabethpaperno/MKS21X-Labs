@@ -6,7 +6,14 @@ public class RealNumber{
   }
 
   public int compareTo(RealNumber other){
-    return (int)(this.getValue() - other.getValue());
+    double sub = this.getValue() - other.getValue();
+    //doing it this way allows for you to not maintian errors created by type casting and using just the difference
+    if (sub > 0){
+      return 1;
+    } else if (sub < 0){
+      return -1;
+    }
+    return 0;
   }
 
   public boolean equals(RealNumber other){
