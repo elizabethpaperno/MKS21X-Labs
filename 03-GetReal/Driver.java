@@ -44,5 +44,21 @@ public class Driver {
 
     RationalNumber frac5 = new RationalNumber(5,0);
     System.out.println(frac5); // 0/1
+
+    int a = 5;
+    int b = 5;
+    for(int i = 0; i < 15; i++){
+     RealNumber value = new RealNumber((Math.random()*(b-a+1))+a);
+     RealNumber value2 = new RealNumber((Math.random()*(b-a+1))+a);
+     System.out.println("Value 1 is " + value);
+     System.out.println("Value 2 is " + value2);
+     System.out.println("value1.CompareTo(value2) returns " + value.compareTo(value2));
+     System.out.println();
+    }
+
+    //random num does not test for equality
+    RealNumber num3 = new RealNumber(4);
+    RealNumber num4 = new RealNumber(4);
+    System.out.println(num3.compareTo(num4)); //0
   }
 }
