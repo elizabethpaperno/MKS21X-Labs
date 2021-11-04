@@ -24,28 +24,28 @@ public class RealNumber{
 
      //or other subclasses of RealNumber (that aren't written yet)
 
-     return value + other.getValue();
+     return this.getValue() + other.getValue();
   }
 
   /*
   *Return the product of this and the other
   */
   public double multiply(RealNumber other){
-    return value * other.getValue();
+    return this.getValue() * other.getValue();
   }
 
   /*
   *Return the this divided by the other
   */
   public double divide(RealNumber other){
-    return value / other.getValue();
+    return this.getValue() / other.getValue();
   }
 
   /*
   *Return the this minus the other
   */
   public double subtract(RealNumber other){
-    return value - other.getValue();
+    return this.getValue() - other.getValue();
   }
 
 
@@ -54,6 +54,6 @@ public class RealNumber{
   }
 
   public String toString(){
-    return ""+value;
+    return ""+this.getValue();
   }
 }
