@@ -16,11 +16,11 @@ public class SuperArray{
   public boolean add(String str){
     supArr[size] = str;
     size += 1;
-    return True;
+    return true;
   }
 
   public String get(int index){
-    if (index > 0 && index < this.size()){
+    if (index > 0 || index < this.size()){
       return supArr[index];
     }
     System.out.println("Index out of bounds in get()");
@@ -28,10 +28,10 @@ public class SuperArray{
   }
 
   public String set(int index, String element) {
-    if (index > 0 && index < this.size()){
+    if (index > 0 || index < this.size()){
       String originalVal = supArr[index];
       supArr[index] = element;
-      return originalVal
+      return originalVal;
     }
     System.out.println("Index out of bounds in set()");
     return null;
