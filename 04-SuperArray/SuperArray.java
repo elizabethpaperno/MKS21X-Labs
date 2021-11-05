@@ -9,6 +9,10 @@ public class SuperArray{
     supArr = new String[maxCap];
   }
 
+  public SuperArray(int initialCapacity){
+    maxCap = initialCapacity;
+  }
+
   public int size(){
     return size;
   }
@@ -35,6 +39,10 @@ public class SuperArray{
     }
     System.out.println("Index out of bounds in set()");
     return null;
+  }
+
+  private void resize(){
+    
   }
 
   public String toString(){
