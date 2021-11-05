@@ -19,6 +19,13 @@ public class SuperArray{
     return True;
   }
 
+  public String get(int index){
+    if (index > 0 && index < this.size()){
+      return supArr[index];
+    }
+    return "Index out of bounds in get()"
+  }
+
   public String toString(){
     String arrStr = "[";
     for (int i = 0; i < this.size(); i++){
