@@ -23,7 +23,18 @@ public class SuperArray{
     if (index > 0 && index < this.size()){
       return supArr[index];
     }
-    return "Index out of bounds in get()"
+    System.out.println("Index out of bounds in get()");
+    return null;
+  }
+
+  public String set(int index, String element) {
+    if (index > 0 && index < this.size()){
+      String originalVal = supArr[index];
+      supArr[index] = element;
+      return originalVal
+    }
+    System.out.println("Index out of bounds in set()");
+    return null;
   }
 
   public String toString(){
