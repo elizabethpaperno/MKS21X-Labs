@@ -13,9 +13,10 @@ public class SuperArray{
     return size;
   }
 
-  public void add(String str){
+  public boolean add(String str){
     supArr[size] = str;
     size += 1;
+    return True;
   }
 
   public String toString(){
