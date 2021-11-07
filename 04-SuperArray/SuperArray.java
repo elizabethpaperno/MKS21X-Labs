@@ -10,7 +10,9 @@ public class SuperArray{
   }
 
   public SuperArray(int initialCapacity){
+    size = 0;
     maxCap = initialCapacity;
+    supArr = new String[maxCap];
   }
 
   public int size(){
@@ -18,6 +20,7 @@ public class SuperArray{
   }
 
   public boolean add(String str){
+    this.resize();
     supArr[size] = str;
     size += 1;
     return true;
@@ -42,7 +45,13 @@ public class SuperArray{
   }
 
   private void resize(){
-    
+    if (this.size() == maxCap) {
+      String[] supArrNew = new String[maxCap * 2 + 1];
+      for (int i = 0; i < this.size; i++){
+        supArrNew[i] = supArr[i];
+      }
+      this.supArr = supArrNew;
+    }
   }
 
   public String toString(){
