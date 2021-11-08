@@ -1,18 +1,18 @@
 public class SuperArray{
   private int size;
   private int maxCap;
-  private String[] supArr;
+  private String[] data;
 
   public SuperArray(){
     size = 0;
     maxCap = 10;
-    supArr = new String[maxCap];
+    data = new String[maxCap];
   }
 
   public SuperArray(int initialCapacity){
     size = 0;
     maxCap = initialCapacity;
-    supArr = new String[maxCap];
+    data = new String[maxCap];
   }
 
   public int size(){
@@ -21,14 +21,30 @@ public class SuperArray{
 
   public boolean add(String str){
     this.resize();
-    supArr[size] = str;
+    data[size] = str;
     size += 1;
     return true;
   }
 
+  public void add(int index,String value){
+    if (index > 0 || index <= this.size()){
+      for (int i = index;i < this.size; i++){
+        data[index+1]= data[i];
+        if(i==index){
+          size += 1;
+          //this.resize();
+          data[index] = value;
+        }
+        //System.out.println(data[i]);
+        //System.out.println(data[i+1]);
+      }
+    }else{
+      System.out.println("Index out of range in add (with index)");
+    }
+  }
   public String get(int index){
     if (index > 0 || index < this.size()){
-      return supArr[index];
+      return data[index];
     }
     System.out.println("Index out of bounds in get()");
     return null;
@@ -36,8 +52,8 @@ public class SuperArray{
 
   public String set(int index, String element) {
     if (index > 0 || index < this.size()){
-      String originalVal = supArr[index];
-      supArr[index] = element;
+      String originalVal = data[index];
+      data[index] = element;
       return originalVal;
     }
     System.out.println("Index out of bounds in set()");
@@ -46,17 +62,17 @@ public class SuperArray{
 
   private void resize(){
     if (this.size() == maxCap) {
-      String[] supArrNew = new String[maxCap * 2 + 1];
+      String[] dataNew = new String[maxCap * 2 + 1];
       for (int i = 0; i < this.size; i++){
-        supArrNew[i] = supArr[i];
+        dataNew[i] = data[i];
       }
-      this.supArr = supArrNew;
+      this.data = dataNew;
     }
   }
 
   public int indexOf(String target) {
     for (int i = 0; i < this.size; i++){
-      if (supArr[i] == target){
+      if (data[i] == target){
         return i;
       }
     }
@@ -65,7 +81,7 @@ public class SuperArray{
 
   public int lastIndexOf(String target){
     for (int i = this.size - 1; i >= 0;i--){
-      if (supArr[i] == target){
+      if (data[i] == target){
         return i;
       }
     }
@@ -76,7 +92,7 @@ public class SuperArray{
   public String toString(){
     String arrStr = "[";
     for (int i = 0; i < this.size(); i++){
-      arrStr += supArr[i];
+      arrStr += data[i];
       if (i != this.size() - 1){
         arrStr += ", ";
       }
@@ -86,9 +102,9 @@ public class SuperArray{
 
   public String toStringDebug(){
     String arrStr = "[";
-    for (int i = 0; i < supArr.length; i++){
-      arrStr += supArr[i];
-      if (i != supArr.length - 1){
+    for (int i = 0; i < data.length; i++){
+      arrStr += data[i];
+      if (i != data.length - 1){
         arrStr += ", ";
       }
     }
