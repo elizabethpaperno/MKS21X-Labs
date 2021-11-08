@@ -54,6 +54,25 @@ public class SuperArray{
     }
   }
 
+  public int indexOf(String target) {
+    for (int i = 0; i < this.size; i++){
+      if (supArr[i] == target){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public int lastIndexOf(String target){
+    for (int i = this.size - 1; i >= 0;i--){
+      if (supArr[i] == target){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+
   public String toString(){
     String arrStr = "[";
     for (int i = 0; i < this.size(); i++){
