@@ -27,14 +27,19 @@ public class SuperArray{
   }
 
   public void add(int index,String value){
+    System.out.println(size);
     if (index > 0 || index <= this.size()){
-      for (int i = index;i < this.size; i++){
-        data[index+1]= data[i];
+      for (int i = this.size;i >= index - 1; i--){
+        System.out.println(i);
         if(i==index){
           size += 1;
-          //this.resize();
+          this.resize();
+          //System.out.println(size);
           data[index] = value;
+          //i += 1;
         }
+          data[index]= data[i-1];
+
         //System.out.println(data[i]);
         //System.out.println(data[i+1]);
       }
@@ -42,6 +47,19 @@ public class SuperArray{
       System.out.println("Index out of range in add (with index)");
     }
   }
+
+  public String remove(int index){
+    if (index > 0 || index <= this.size()){
+      String valueRemove = data[index];
+      for (int i = index +1;i < this.size() - 1; i++){
+        data[index]= data[index+1];
+      }
+      size -= 1;
+      return valueRemove;
+    }
+    return null;
+  }
+
   public String get(int index){
     if (index > 0 || index < this.size()){
       return data[index];
