@@ -27,22 +27,12 @@ public class SuperArray{
   }
 
   public void add(int index,String value){
-    System.out.println(size);
     if (index > 0 || index <= this.size()){
-      for (int i = this.size;i >= index - 1; i--){
-        System.out.println(i);
-        if(i==index){
-          size += 1;
-          this.resize();
-          //System.out.println(size);
-          data[index] = value;
-          //i += 1;
-        }
-          data[index]= data[i-1];
-
-        //System.out.println(data[i]);
-        //System.out.println(data[i+1]);
+      for (int i = this.size;i > index - 1; i--){
+        data[i]= data[i-1];
       }
+      data[index] = value;
+      size +=1;
     }else{
       System.out.println("Index out of range in add (with index)");
     }
