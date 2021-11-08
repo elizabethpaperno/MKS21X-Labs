@@ -1,5 +1,6 @@
 public class Demo{
   public static void main(String[] args){
+    /*
     //PHASE 1
     SuperArray super1 = new SuperArray();
     super1.add("hi");
@@ -30,7 +31,7 @@ public class Demo{
       }
     }
     System.out.println(super1); //goodbye, adios, NOPE!
-
+    */
     //PHASE 3
     SuperArray super2 = new SuperArray(4);
     super2.add("bird");
@@ -38,18 +39,21 @@ public class Demo{
     super2.add("dog");
     super2.add("butterfly");
 
-    System.out.println(super2);
-    System.out.println(super2.toStringDebug());
+    //System.out.println(super2);
+    //System.out.println(super2.toStringDebug());
 
     super2.add("ladybug");
     super2.add("blurb");
-    
-    System.out.println(super2);
+
+    //System.out.println(super2);
+    //System.out.println(super2.toStringDebug());
+
+    //for (int i=0; i < super2.size(); i++){
+      //System.out.println(super2.get(i));
+    //}
+
+    //super 2 is [bird, cat, dog, love, butterfly, ladybug, blurb, null, null, null]
+    super2.add(3,"love");
     System.out.println(super2.toStringDebug());
-
-    for (int i=0; i < super2.size(); i++){
-      System.out.println(super2.get(i));
-    }
-
   }
 }
