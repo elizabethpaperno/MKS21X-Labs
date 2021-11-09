@@ -28,6 +28,7 @@ public class SuperArray{
 
   public void add(int index,String value){
     if (index > 0 || index <= this.size()){
+      this.resize();
       for (int i = this.size;i > index - 1; i--){
         data[i]= data[i-1];
       }
