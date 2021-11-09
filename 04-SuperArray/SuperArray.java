@@ -21,7 +21,7 @@ public class SuperArray{
 
   public boolean add(String str){
     this.resize();
-    data[size] = str;
+    data[this.size()] = str;
     size += 1;
     return true;
   }
@@ -34,21 +34,33 @@ public class SuperArray{
       data[index] = value;
       size +=1;
     }else{
-      System.out.println("Index out of range in add (with index)");
+      System.out.println("Index out of range in add(index)");
     }
   }
 
   public String remove(int index){
     if (index > 0 || index <= this.size()){
       String valueRemove = data[index];
-      for (int i = index +1;i < this.size() - 1; i++){
-        data[index]= data[index+1];
+      for (int i = index;i < this.size() - 1; i++){
+        data[i]= data[i+1];
       }
       size -= 1;
       return valueRemove;
     }
+    System.out.println("Index out of range in remove(index)");
     return null;
   }
+
+  public boolean remove(String target){
+    int indexVal = this.indexOf(target);
+    if (indexVal!= -1){
+      this.remove(indexVal);
+      size -= 1;
+      return true;
+    }
+    return false;
+  }
+
 
   public String get(int index){
     if (index > 0 || index < this.size()){
