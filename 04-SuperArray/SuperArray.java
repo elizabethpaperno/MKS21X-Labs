@@ -10,6 +10,9 @@ public class SuperArray{
   }
 
   public SuperArray(int initialCapacity){
+    if (initialCapacity < 0){
+      throw new IllegalArgumentException ("IllegalArgumentException: " + initialCapacity + "is not a valid argument for SuperArray()");
+    }
     size = 0;
     maxCap = initialCapacity;
     data = new String[maxCap];
@@ -20,15 +23,19 @@ public class SuperArray{
   }
 
   public boolean add(String str){
-    this.resize();
+    if (this.size() == maxCap) {
+      this.resize();
+    }
     data[this.size()] = str;
     size += 1;
     return true;
   }
 
   public void add(int index,String value){
-    if (index > 0 || index <= this.size()){
+    if (this.size() == maxCap) {
       this.resize();
+    }
+    if (index > 0 || index < this.size()){
       for (int i = this.size;i > index - 1; i--){
         data[i]= data[i-1];
       }
@@ -82,11 +89,9 @@ public class SuperArray{
   }
 
   private void resize(){
-    if (this.size() == maxCap) {
-      String[] dataNew = new String[maxCap * 2 + 1];
-      for (int i = 0; i < this.size; i++){
-        dataNew[i] = data[i];
-      }
+    String[] dataNew = new String[maxCap * 2 + 1];
+    for (int i = 0; i < this.size; i++){
+      dataNew[i] = data[i];
       this.data = dataNew;
     }
   }
