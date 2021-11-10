@@ -32,31 +32,29 @@ public class SuperArray{
   }
 
   public void add(int index,String value){
+    if (!(index > 0 || index < this.size())){
+      throw new IndexOutOfBoundsException("IndexOutOfBoundsException: Index "+ index + " is out of bounds");
+    }
     if (this.size() == maxCap) {
       this.resize();
     }
-    if (index > 0 || index < this.size()){
-      for (int i = this.size;i > index - 1; i--){
-        data[i]= data[i-1];
-      }
-      data[index] = value;
-      size +=1;
-    }else{
-      System.out.println("Index out of range in add(index)");
+    for (int i = this.size;i > index - 1; i--){
+      data[i]= data[i-1];
     }
+    data[index] = value;
+    size +=1;
   }
 
   public String remove(int index){
-    if (index > 0 || index <= this.size()){
-      String valueRemove = data[index];
-      for (int i = index;i < this.size() - 1; i++){
-        data[i]= data[i+1];
-      }
-      size -= 1;
-      return valueRemove;
+    if (!(index > 0 || index <= this.size())){
+      throw new IndexOutOfBoundsException("IndexOutOfBoundsException: Index "+ index + " is out of bounds");
     }
-    System.out.println("Index out of range in remove(index)");
-    return null;
+    String valueRemove = data[index];
+    for (int i = index;i < this.size() - 1; i++){
+      data[i]= data[i+1];
+    }
+    size -= 1;
+    return valueRemove;
   }
 
   public boolean remove(String target){
@@ -78,13 +76,12 @@ public class SuperArray{
   }
 
   public String set(int index, String element) {
-    if (index > 0 || index < this.size()){
-      String originalVal = data[index];
-      data[index] = element;
-      return originalVal;
+    if (!(index > 0 || index < this.size())){
+      throw new IndexOutOfBoundsException("IndexOutOfBoundsException: Index "+ index + " is out of bounds");
     }
-    System.out.println("Index out of bounds in set()");
-    return null;
+    String originalVal = data[index];
+    data[index] = element;
+    return originalVal;
   }
 
   private void resize(){
