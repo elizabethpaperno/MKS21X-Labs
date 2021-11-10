@@ -71,11 +71,10 @@ public class SuperArray{
 
 
   public String get(int index){
-    if (index > 0 || index < this.size()){
-      return data[index];
+    if (!(index > 0 || index < this.size())){
+      throw new IndexOutOfBoundsException("IndexOutOfBoundsException: Index "+ index + " is out of bounds");
     }
-    System.out.println("Index out of bounds in get()");
-    return null;
+    return data[index];
   }
 
   public String set(int index, String element) {
@@ -94,6 +93,7 @@ public class SuperArray{
       dataNew[i] = data[i];
       this.data = dataNew;
     }
+    maxCap = maxCap * 2 + 1;
   }
 
   public int indexOf(String target) {
