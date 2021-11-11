@@ -73,6 +73,14 @@ public class SuperArrayExceptionTester{
       System.out.println(testNum+". PASS "+testName);
     }
     //Test7: constructor(-1 size)
+    testNum++;
+    testName = "constructor illegal argument -1";
+    try{
+        SuperArray list2 = new SuperArray(-1);
+        System.out.println(testNum+". FAIL! No exception thrown "+testName);
+    }catch(IllegalArgumentException e){
+      System.out.println(testNum+". PASS "+testName);
+    }
     //BE CAREFUL! Which exception is expected?
 
 
