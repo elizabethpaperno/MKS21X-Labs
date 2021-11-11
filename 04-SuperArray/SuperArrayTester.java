@@ -253,6 +253,32 @@ public class SuperArrayTester{
       e.printStackTrace();
     }
 
+    //test indexOf and lastIndexOf
+    testNum++;
+    testName="Test indexOf and lastIndexOf";
+    boolean result = true;
+    SuperArray list2 = new SuperArray(20);
+    String[]values = {"one","fish","two","fish","red","fish","blue","fish"};
+    for(int i = 0; i < values.length; i++){
+      list2.add(values[i]);
+    }
+    if (list2.indexOf("one")!= 0 || list2.indexOf("fish")!= 1 || list2.indexOf("two")!= 2 || list2.indexOf("red")!= 4 || list2.indexOf("blue")!= 6){
+      result = false;
+      System.out.println("Returned incorrect index val");
+    }
+    if (list2.indexOf("bla") != -1 || list2.lastIndexOf("bla") != -1){
+      result = false;
+      System.out.println("indexOf or lastIndexOf not returning -1 for not present string val");
+    }
+    if (list2.lastIndexOf("fish") != 7){
+      result = false;
+      System.out.println("lastIndexOf is not " + list2.lastIndexOf("fish") + " it is 7");
+    }
 
+    if(result){
+      System.out.println(testNum+". PASS "+testName);
+    }else{
+      System.out.println(testNum+". FAIL "+testName);
+    }
   }
 }
