@@ -64,7 +64,14 @@ public class SuperArrayExceptionTester{
       System.out.println(testNum+". PASS "+testName);
     }
     //Test6: add(size()+1,value)
-
+    testNum++;
+    testName = "add out of bounds size()+1";
+    try{
+        list.add(list.size()+1,"hi");
+        System.out.println(testNum+". FAIL! No exception thrown "+testName);
+    }catch(IndexOutOfBoundsException e){
+      System.out.println(testNum+". PASS "+testName);
+    }
     //Test7: constructor(-1 size)
     //BE CAREFUL! Which exception is expected?
 
