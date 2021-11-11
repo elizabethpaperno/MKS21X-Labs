@@ -52,8 +52,23 @@ public class Demo{
       //System.out.println(super2.get(i));
     //}
 
-    //super 2 is [bird, cat, dog, love, butterfly, ladybug, blurb, null, null, null]
-    super2.add(3,"love");
-    System.out.println(super2.toStringDebug());
+    //super 2 is [bird, cat, dog, butterfly, ladybug, blurb]
+    System.out.println(super2.indexOf("dog")); //2
+    System.out.println(super2.indexOf("Happy")); //-1
+
+    super2.add(3,"love"); //[bird, cat, dog, love, ladybug, blurb]
+    System.out.println(super2);
+
+    super2.remove(3); //[bird, cat, dog, butterfly, ladybug, blurb]
+    System.out.println(super2);
+
+    super2.add("dog");
+    //System.out.println(super2);
+    System.out.println(super2.lastIndexOf("dog")); //6
+
+    super2.remove("ladybug"); //[bird, cat, dog, butterfly, blurb]
+    System.out.println(super2);
+    System.out.println(super2.remove("Happy")); //false
+    System.out.println(super2); //[bird, cat, dog, butterfly, blurb]
   }
 }
