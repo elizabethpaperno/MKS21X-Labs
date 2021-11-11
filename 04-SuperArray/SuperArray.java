@@ -23,9 +23,7 @@ public class SuperArray{
   }
 
   public boolean add(String str){
-    if (this.size() == maxCap) {
-      this.resize();
-    }
+    this.resize();
     data[this.size()] = str;
     size += 1;
     return true;
@@ -35,10 +33,8 @@ public class SuperArray{
     if (!(index > 0 || index < this.size())){
       throw new IndexOutOfBoundsException("IndexOutOfBoundsException: Index "+ index + " is out of bounds");
     }
-    if (this.size() == maxCap) {
-      this.resize();
-    }
-    for (int i = this.size;i > index - 1; i--){
+    this.resize();
+    for (int i = this.size;i > index; i--){
       data[i]= data[i-1];
     }
     data[index] = value;
@@ -85,12 +81,14 @@ public class SuperArray{
   }
 
   private void resize(){
-    String[] dataNew = new String[maxCap * 2 + 1];
-    for (int i = 0; i < this.size; i++){
-      dataNew[i] = data[i];
+    if (this.size() == maxCap) {
+      String[] dataNew = new String[maxCap * 2 + 1];
+      for (int i = 0; i < this.size; i++){
+        dataNew[i] = data[i];
+      }
       this.data = dataNew;
+      maxCap = maxCap * 2 + 1;
     }
-    maxCap = maxCap * 2 + 1;
   }
 
   public int indexOf(String target) {
