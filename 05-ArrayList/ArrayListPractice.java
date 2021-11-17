@@ -1,5 +1,17 @@
 import java.util.ArrayList;
 public class ArrayListPractice {
+  public static void main(String args){
+    ArrayList a = new ArrayList(200000);
+    for (int i = 0; i < 200100;i++){
+      double rand = Math.random();
+      if (rand < 0.1){
+        a.add("");
+      }else{
+        a.add("" + rand);
+      }
+    }
+    a.replaceEmpty();
+  }
   public static ArrayList<String> replaceEmpty( ArrayList<String> data){
   //return an new ArrayList that has all of the values of the original ArrayList except
   //that all empty strings are replaced with the word "Empty".
