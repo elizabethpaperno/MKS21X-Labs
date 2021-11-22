@@ -26,8 +26,16 @@ public class Triangles {
     } catch (FileNotFoundException e) {
       System.out.print("File not found");
     }
-
   }
+  public static void vertical(String fileName){
+    try {
+      File file = new File(fileName);
+      Scanner input = new Scanner(file);
+    } catch(FileNotFoundException e){
+      System.out.print("File not found");
+    }
+  }
+
   public static void main(String[] args) {
     horizontal("data.txt");
   }
