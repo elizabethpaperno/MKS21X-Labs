@@ -22,15 +22,40 @@ public class Triangles {
         }
       }
       input.close();
-      System.out.print(numTri);
+      System.out.println(numTri);
     } catch (FileNotFoundException e) {
-      System.out.print("File not found");
+      System.out.println("File not found");
     }
   }
   public static void vertical(String fileName){
     try {
       File file = new File(fileName);
       Scanner input = new Scanner(file);
+      int numTri = 0;
+      while (input.hasNextInt()){
+        int[] triangle1 = new int[3];
+        int[] triangle2 = new int[3];
+        int[] triangle3 = new int[3];
+
+        for (int i = 0; i < 3; i++){
+          triangle1[i] = input.nextInt();
+          triangle2[i] = input.nextInt();
+          triangle3[i] = input.nextInt();
+        }
+
+        if (isTri(triangle1[0], triangle1[1], triangle1[2])){
+          numTri += 1;
+        }
+
+        if (isTri(triangle2[0], triangle2[1], triangle2[2])){
+          numTri += 1;
+        }
+
+        if (isTri(triangle3[0], triangle3[1], triangle3[2])){
+          numTri += 1;
+        }
+      }
+      System.out.println(numTri);
     } catch(FileNotFoundException e){
       System.out.print("File not found");
     }
@@ -38,5 +63,6 @@ public class Triangles {
 
   public static void main(String[] args) {
     horizontal("data.txt");
+    vertical("data.txt");
   }
 }
