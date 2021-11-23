@@ -62,7 +62,10 @@ public class Triangles {
   }
 
   public static void main(String[] args) {
-    horizontal("data.txt");
-    vertical("data.txt");
+    if (Integer.parseInt(args[1])==1){
+      horizontal(args[0]);
+    }else if (Integer.parseInt(args[1])==2){
+      vertical(args[0]);
+    }
   }
 }
