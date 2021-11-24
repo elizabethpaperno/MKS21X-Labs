@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 public class Wrapping {
   public static void getAmtWrapPaper(String fileName){
     try {
@@ -16,13 +19,19 @@ public class Wrapping {
 
         int surArea = 2*l*w + 2*w*h + 2*h*l;
 
-        if (side1 <= side2 && side1 <= side3){
-          totalNeeded += side1 + surArea;
-        }
-        
+        int smallSize = Math.min(Math.min(side1, side2), side3);
+
+        totalNeeded += surArea + smallSize;
+
       }
+      System.out.println(totalNeeded);
     }catch (FileNotFoundException e) {
       System.out.println("File not found");
     }
+  }
+
+  public static void main(String[] args){
+    getAmtWrapPaper("file1.txt");
+    getAmtWrapPaper("file2.txt");
   }
 }
