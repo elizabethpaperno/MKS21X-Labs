@@ -29,9 +29,31 @@ public class Wrapping {
       System.out.println("File not found");
     }
   }
+    public static void getAmtRibbon(String fileName){
+      try {
+        File file = new File(fileName);
+        Scanner input = new Scanner(file);
+        int totalNeeded = 0;
+        while (input.hasNextLine()){
+          String[]nums = input.nextLine().split("x");
+          int l = Integer.parseInt(nums[0]);
+          int w = Integer.parseInt(nums[1]);
+          int h = Integer.parseInt(nums[2]);
 
+          int amtBow = l * w * h;
+          int perim = 2 * ( (l + w + h) - Math.max(Math.max(l, h), w));
+          totalNeeded += amtBow + perim;
+        }
+        System.out.println(totalNeeded);
+      }catch (FileNotFoundException e) {
+        System.out.println("File not found");
+      }
+    }
   public static void main(String[] args){
     getAmtWrapPaper("file1.txt");
     getAmtWrapPaper("file2.txt");
+
+    getAmtRibbon("file1.txt");
+    getAmtRibbon("file2.txt");
   }
 }
