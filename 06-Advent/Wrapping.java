@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-public class Wrapper {
+public class Wrapping {
   public static void getAmtWrapPaper(String fileName){
     try {
       File file = new File(fileName);
