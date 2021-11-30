@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-public class Wrapping {
+public class Wrapper {
   public static void getAmtWrapPaper(String fileName){
     try {
       File file = new File(fileName);
@@ -50,10 +50,10 @@ public class Wrapping {
       }
     }
   public static void main(String[] args){
-    getAmtWrapPaper("file1.txt");
-    getAmtWrapPaper("file2.txt");
-
-    getAmtRibbon("file1.txt");
-    getAmtRibbon("file2.txt");
+    if (Integer.parseInt(args[1])==1){
+      getAmtWrapPaper(args[0]);
+    }else if (Integer.parseInt(args[1])==2){
+      getAmtRibbon(args[0]);
+    }
   }
 }
