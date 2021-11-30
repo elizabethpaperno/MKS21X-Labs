@@ -43,7 +43,13 @@ public class Non {
     }
   }
 
-
+  public static boolean befAndAft(String str){
+    for (int i = 0; i < str.length() - 2; i++){
+      if (str.charAt(i) == str.charAt(i + 2)){
+      }
+    }
+    return false;
+  }
   public static void part2(String fileName) {
     try {
       int nice = 0;
@@ -57,6 +63,7 @@ public class Non {
       System.out.println("File not found");
     }
   }
+
 
   public static void main(String[] args){
    if (Integer.parseInt(args[1])==1){
