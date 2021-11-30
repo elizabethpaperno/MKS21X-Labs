@@ -2,23 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Non {
-  public static void part1(String fileName) {
-    try {
-      int nice = 0;
-        File file = new File(fileName);
-        Scanner input = new Scanner(file);
-        while (input.hasNextLine()){
-           String str = input.nextLine();
-           if (hasVowel(str) && doubleLet(str) && containsStr(str)){
-             nice += 1;
-           }
-        }
-        System.out.println(nice);
-    }catch (FileNotFoundException e) {
-      System.out.println("File not found");
-    }
-  }
-
   public static boolean hasVowel(String str){
     int numV = 0;
     for (int i = 0; i < str.length(); i++){
@@ -38,8 +21,41 @@ public class Non {
     }
     return doubC >= 1;
   }
+
   public static boolean containsStr(String str){
     return !(str.contains("ab") || str.contains("cd") || str.contains("pq") || str.contains("xy"));
+  }
+
+  public static void part1(String fileName) {
+    try {
+      int nice = 0;
+        File file = new File(fileName);
+        Scanner input = new Scanner(file);
+        while (input.hasNextLine()){
+           String str = input.nextLine();
+           if (hasVowel(str) && doubleLet(str) && containsStr(str)){
+             nice += 1;
+           }
+        }
+        System.out.println(nice);
+    }catch (FileNotFoundException e) {
+      System.out.println("File not found");
+    }
+  }
+
+
+  public static void part2(String fileName) {
+    try {
+      int nice = 0;
+        File file = new File(fileName);
+        Scanner input = new Scanner(file);
+        while (input.hasNextLine()){
+           String str = input.nextLine();
+        }
+        System.out.println(nice);
+    }catch (FileNotFoundException e) {
+      System.out.println("File not found");
+    }
   }
 
   public static void main(String[] args){
