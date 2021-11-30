@@ -16,11 +16,16 @@ public class Non {
     }
     return (numV >= 3);
   }
+
+  public static boolean containsStr (String str){
+    return !(str.contains("ab") || str.contains("cd") || str.contains("pq") || str.contains("xy"));
+  }
+
   public static void main(String[] args){
    if (Integer.parseInt(args[1])==1){
-     getAmtWrapPaper(args[0]);
+     part1(args[0]);
    }else if (Integer.parseInt(args[1])==2){
-     getAmtRibbon(args[0]);
+     //part2(args[0]);
    }
  }
 }
