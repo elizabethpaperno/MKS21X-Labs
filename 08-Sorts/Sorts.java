@@ -30,5 +30,19 @@ public class Sorts{
     int[] test2 = {1,0,4,7,6,2,3,5};
     bubbleSort(test2);
     System.out.println(Arrays.toString(test2));
+
+    int[] rand1 = new int[20];
+    for (int i = 0; i < rand1.length; i++){
+      rand1[i]=(int)((Math.random() * 10) + 1);
+    }
+    bubbleSort(rand1);
+    System.out.println(Arrays.toString(rand1));
+
+    int[] rand2 = new int[100];
+    for (int i = 0; i < rand2.length; i++){
+      rand2[i]=(int)((Math.random() * 10) - 10);
+    }
+    bubbleSort(rand2);
+    System.out.println(Arrays.toString(rand2));
   }
 }
