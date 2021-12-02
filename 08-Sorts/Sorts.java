@@ -23,26 +23,45 @@ public class Sorts{
     }
   }
 
+  public static boolean checkSorted(int[] ary){
+    int[] copy = new int[ary.length];
+    for (int i = 0; i < ary.length; i++){
+      copy[i] = ary[i];
+    }
+    Arrays.sort(copy);
+    return (copy.equals(ary));
+  }
+
+  public static int[] randArray(int length, int start, int end){
+    int[] rand = new int[length];
+    for (int i = 0; i < rand.length; i++){
+      rand[i]=(int)(Math.random()*(end-start+1))+end;
+    }
+    return rand;
+  }
+
   public static void main(String[] args){
-    int[] test1 = {0,1,2,3,4,5,6};
-    bubbleSort(test1);
-    System.out.println(Arrays.toString(test1));
-    int[] test2 = {1,0,4,7,6,2,3,5};
-    bubbleSort(test2);
-    System.out.println(Arrays.toString(test2));
+    int[] sizeZero = new int[0];
+    bubbleSort(sizeZero);
+    System.out.println("Bubble - Size Zero: " + checkSorted(sizeZero));
+    int[] sizeOne = {-1};
+    bubbleSort(sizeOne);
+    System.out.println("Bubble - Size One: " + checkSorted(sizeOne));
 
-    int[] rand1 = new int[20];
-    for (int i = 0; i < rand1.length; i++){
-      rand1[i]=(int)((Math.random() * 10) + 1);
-    }
-    bubbleSort(rand1);
-    System.out.println(Arrays.toString(rand1));
+    int[] sorted = randArray(10, -5, 10);
+    bubbleSort(sorted);
+    System.out.println("Bubble - Sorted Ary: " + checkSorted(sorted));
 
-    int[] rand2 = new int[100];
-    for (int i = 0; i < rand2.length; i++){
-      rand2[i]=(int)((Math.random() * 10) - 10);
-    }
-    bubbleSort(rand2);
-    System.out.println(Arrays.toString(rand2));
+    int[] randLarge = randArray(2000, -1000, 1000);
+    bubbleSort(randLarge);
+    System.out.println("Bubble - Random Large Ary: " + checkSorted(sorted));
+
+    int[] dup = randArray(100, -5, 5);
+    bubbleSort(dup);
+    System.out.println("Bubble - Random Large Ary: " + checkSorted(dup));
+
+    int[] noDup = randArray(1000, 0, 10);
+    bubbleSort(noDup);
+    System.out.println("Bubble - Random Large Ary: " + checkSorted(noDup));
   }
 }
