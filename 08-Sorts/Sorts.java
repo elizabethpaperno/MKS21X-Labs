@@ -23,6 +23,28 @@ public class Sorts{
     }
   }
 
+  /*Selection sort
+ */
+public static void selectionSort(int [] ary) {
+  /*Your implementation here!*/
+  int start = 0;
+  int minVal = ary[0];
+  int minIndex = 0;
+  int ogValStart = 0;
+  while (start != ary.length - 1){
+    for (int i = 0; i >= start && i < ary.length; i++){
+      if (ary[i] < minVal){
+        minVal = ary[i];
+        minIndex = i;
+      }
+    }
+    ogValStart = ary[start];
+    ary[start] = minVal;
+    ary[minIndex] = ogValStart;
+    System.out.println(Arrays.toString(ary));
+  }
+}
+
   public static boolean checkSorted(int[] ary){
     int[] copy = new int[ary.length];
     for (int i = 0; i < ary.length; i++){
@@ -51,6 +73,7 @@ public class Sorts{
   }
 
   public static void main(String[] args){
+    /*
     int[] sizeZero = new int[0];
     bubbleSort(sizeZero);
     System.out.println("Bubble - Size Zero: " + checkSorted(sizeZero));
@@ -77,5 +100,34 @@ public class Sorts{
     int[] revSort = reverseSortAry(randArray(100, -10, 10));
     bubbleSort(revSort);
     System.out.println("Bubble - Reverse Array: " + checkSorted(revSort));
+    */
+
+    int[] sizeZero = new int[0];
+    selectionSort(sizeZero);
+    System.out.println("Selection - Size Zero: " + checkSorted(sizeZero));
+
+    int[] sizeOne = {-1};
+    selectionSort(sizeOne);
+    System.out.println("Selection - Size One: " + checkSorted(sizeOne));
+
+    int[] sorted = randArray(10, -5, 10);
+    selectionSort(sorted);
+    System.out.println("Selection - Sorted Ary: " + checkSorted(sorted));
+
+    int[] randLarge = randArray(2000, -1000, 1000);
+    selectionSort(randLarge);
+    System.out.println("Selection - Random Large Ary: " + checkSorted(sorted));
+
+    int[] dup = randArray(100, -5, 5);
+    selectionSort(dup);
+    System.out.println("Selection - Ary with Duplicates: " + checkSorted(dup));
+
+    int[] noDup = randArray(300, 0, 10);
+    selectionSort(noDup);
+    System.out.println("Selection - Ary No Duplicates: " + checkSorted(noDup));
+
+    int[] revSort = reverseSortAry(randArray(100, -10, 10));
+    selectionSort(revSort);
+    System.out.println("Selection - Reverse Array: " + checkSorted(revSort));
   }
 }
