@@ -27,11 +27,10 @@ public class Sorts{
  */
 public static void selectionSort(int [] ary) {
   /*Your implementation here!*/
-  int start = 0;
-  int minVal = ary[0];
-  int minIndex = 0;
-  int ogValStart = 0;
-  while (start != ary.length - 1){
+  int ogValStart = 5;
+  for (int start = 0; start < ary.length; start++){
+    int minVal = ary[start];
+    int minIndex = start;
     for (int i = start; i < ary.length; i++){
       if (ary[i] < minVal){
         minVal = ary[i];
@@ -41,8 +40,7 @@ public static void selectionSort(int [] ary) {
     ogValStart = ary[start];
     ary[start] = minVal;
     ary[minIndex] = ogValStart;
-    start += 1;
-    System.out.println(Arrays.toString(ary));
+    //System.out.println(Arrays.toString(ary));
   }
 }
 
@@ -103,12 +101,12 @@ public static void selectionSort(int [] ary) {
     System.out.println("Bubble - Reverse Array: " + checkSorted(revSort));
     */
 
-    int[] ex1 = {7, 5, 4, 2};
-    selectionSort(ex1);
+    // int[] ex1 = {7, 5, 4, 2};
+    // selectionSort(ex1);
 
-    int[] ex2 = {5, 1, 12, -5, 16, 2, 12, 14};
-    selectionSort(ex2);
-    /*
+    // int[] ex2 = {5, 1, 12, -5, 16, 2, 12, 14};
+    // selectionSort(ex2);
+
     int[] sizeZero = new int[0];
     selectionSort(sizeZero);
     System.out.println("Selection - Size Zero: " + checkSorted(sizeZero));
@@ -136,6 +134,5 @@ public static void selectionSort(int [] ary) {
     int[] revSort = reverseSortAry(randArray(100, -10, 10));
     selectionSort(revSort);
     System.out.println("Selection - Reverse Array: " + checkSorted(revSort));
-    */
   }
 }
