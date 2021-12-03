@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 public class Sorts{
 
   /**Bubble sort of an int array.
@@ -29,7 +29,7 @@ public class Sorts{
       copy[i] = ary[i];
     }
     Arrays.sort(copy);
-    return (copy.equals(ary));
+    return (Arrays.equals(copy,ary));
   }
 
   public static int[] randArray(int length, int start, int end){
@@ -38,6 +38,16 @@ public class Sorts{
       rand[i]=(int)(Math.random()*(end-start+1))+end;
     }
     return rand;
+  }
+
+  public static int[] reverseSortAry(int[] ary){
+    Arrays.sort(ary);
+    for (int i = 0; i < ary.length / 2; i++){
+      int temp = ary[i];
+      ary[i] = ary[ary.length - i - 1];
+      ary[ary.length - i - 1] = temp;
+    }
+    return ary;
   }
 
   public static void main(String[] args){
@@ -58,10 +68,14 @@ public class Sorts{
 
     int[] dup = randArray(100, -5, 5);
     bubbleSort(dup);
-    System.out.println("Bubble - Random Large Ary: " + checkSorted(dup));
+    System.out.println("Bubble - Ary with Duplicates: " + checkSorted(dup));
 
-    int[] noDup = randArray(1000, 0, 10);
+    int[] noDup = randArray(300, 0, 10);
     bubbleSort(noDup);
-    System.out.println("Bubble - Random Large Ary: " + checkSorted(noDup));
+    System.out.println("Bubble - Ary No Duplicates: " + checkSorted(noDup));
+
+    int[] revSort = reverseSortAry(randArray(100, -10, 10));
+    bubbleSort(revSort);
+    System.out.println("Bubble - Reverse Array: " + checkSorted(revSort));
   }
 }
