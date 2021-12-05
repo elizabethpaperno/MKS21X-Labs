@@ -45,7 +45,7 @@ public class BinarySearch {
       rand[i]=(int)(Math.random()*10000000); //ensures no duplicates (otherwise test is invalid)
     }
     Arrays.sort(rand);
-    System.out.println(Arrays.toString(rand));
+    //System.out.println(Arrays.toString(rand));
 
     boolean working = true;
     int res = 0;
@@ -53,7 +53,7 @@ public class BinarySearch {
       res = binarySearch(rand, rand[i]);
       if (res != i){
         working = false;
-        System.out.println(rand[i]);
+        //System.out.println(rand[i]);
       }
 
     }
