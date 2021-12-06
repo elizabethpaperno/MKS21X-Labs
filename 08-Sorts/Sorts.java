@@ -23,27 +23,45 @@ public class Sorts{
     }
   }
 
-  /*Selection sort
- */
-public static void selectionSort(int [] ary) {
-  /*Your implementation here!*/
-  int ogValStart = 5;
-  for (int start = 0; start < ary.length; start++){
-    int minVal = ary[start];
-    int minIndex = start;
-    for (int i = start; i < ary.length; i++){
-      if (ary[i] < minVal){
-        minVal = ary[i];
-        minIndex = i;
+    /*Selection sort
+   */
+  public static void selectionSort(int [] ary) {
+    /*Your implementation here!*/
+    int ogValStart = 5;
+    int minVal;
+    int minIndex;
+    for (int start = 0; start < ary.length; start++){
+      minVal = ary[start];
+      minIndex = start;
+      for (int i = start; i < ary.length; i++){
+        if (ary[i] < minVal){
+          minVal = ary[i];
+          minIndex = i;
+        }
+      }
+      ogValStart = ary[start];
+      ary[start] = minVal;
+      ary[minIndex] = ogValStart;
+      //System.out.println(Arrays.toString(ary));
+    }
+  }
+
+  public static void insertionSort(int[]data){
+  /*Your implementation here*/
+    int key;
+    for (int i = 1; i < data.length; i++){
+      key = data[i];
+      while (key < data[i-1]){
+        shiftLeft(data, key);
       }
     }
-    ogValStart = ary[start];
-    ary[start] = minVal;
-    ary[minIndex] = ogValStart;
-    //System.out.println(Arrays.toString(ary));
   }
-}
-
+  public static int[] shiftLeft(int[] data, int key){
+    for (int i = key; i >= 0; i--){
+      data[i]= data[i-1];
+    }
+    return data;
+  }
   public static boolean checkSorted(int[] ary){
     int[] copy = new int[ary.length];
     for (int i = 0; i < ary.length; i++){
@@ -107,6 +125,7 @@ public static void selectionSort(int [] ary) {
     // int[] ex2 = {5, 1, 12, -5, 16, 2, 12, 14};
     // selectionSort(ex2);
 
+    /*
     int[] sizeZero = new int[0];
     selectionSort(sizeZero);
     System.out.println("Selection - Size Zero: " + checkSorted(sizeZero));
@@ -134,5 +153,10 @@ public static void selectionSort(int [] ary) {
     int[] revSort = reverseSortAry(randArray(100, -10, 10));
     selectionSort(revSort);
     System.out.println("Selection - Reverse Array: " + checkSorted(revSort));
+    */
+
+    int[] ex1 = {2, 4, 5, 1, 3};
+    selectionSort(ex1);
+    System.out.println(Arrays.toString(ex1));
   }
 }
