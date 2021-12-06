@@ -51,17 +51,21 @@ public class Sorts{
     int key;
     for (int i = 1; i < data.length; i++){
       key = data[i];
-      while (key < data[i-1]){
-        shiftLeft(data, key);
+      int j;
+      for(j = i-1; j > -1 && key < data[j]; j--) {
+        data[j+1] = data[j];
       }
+      data[j+1] = key;
     }
   }
+
   public static int[] shiftLeft(int[] data, int key){
     for (int i = key; i > 0; i--){
       data[i]= data[i-1];
     }
     return data;
   }
+
   public static boolean checkSorted(int[] ary){
     int[] copy = new int[ary.length];
     for (int i = 0; i < ary.length; i++){
@@ -155,8 +159,32 @@ public class Sorts{
     System.out.println("Selection - Reverse Array: " + checkSorted(revSort));
     */
 
-    int[] ex1 = {2, 4, 5, 1, 3};
-    insertionSort(ex1);
-    System.out.println(Arrays.toString(ex1));
+    int[] sizeZero = new int[0];
+    insertionSort(sizeZero);
+    System.out.println("Insertion - Size Zero: " + checkSorted(sizeZero));
+
+    int[] sizeOne = {-1};
+    insertionSort(sizeOne);
+    System.out.println("Insertion - Size One: " + checkSorted(sizeOne));
+
+    int[] sorted = randArray(10, -5, 10);
+    insertionSort(sorted);
+    System.out.println("Insertion - Sorted Ary: " + checkSorted(sorted));
+
+    int[] randLarge = randArray(2000, -1000, 1000);
+    insertionSort(randLarge);
+    System.out.println("Insertion - Random Large Ary: " + checkSorted(sorted));
+
+    int[] dup = randArray(100, -5, 5);
+    insertionSort(dup);
+    System.out.println("Insertion - Ary with Duplicates: " + checkSorted(dup));
+
+    int[] noDup = randArray(300, 0, 10);
+    insertionSort(noDup);
+    System.out.println("Insertion - Ary No Duplicates: " + checkSorted(noDup));
+
+    int[] revSort = reverseSortAry(randArray(100, -10, 10));
+    insertionSort(revSort);
+    System.out.println("Insertion - Reverse Array: " + checkSorted(revSort));
   }
 }
