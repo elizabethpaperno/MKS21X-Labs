@@ -57,7 +57,7 @@ public class Sorts{
     }
   }
   public static int[] shiftLeft(int[] data, int key){
-    for (int i = key; i >= 0; i--){
+    for (int i = key; i > 0; i--){
       data[i]= data[i-1];
     }
     return data;
@@ -156,7 +156,7 @@ public class Sorts{
     */
 
     int[] ex1 = {2, 4, 5, 1, 3};
-    selectionSort(ex1);
+    insertionSort(ex1);
     System.out.println(Arrays.toString(ex1));
   }
 }
