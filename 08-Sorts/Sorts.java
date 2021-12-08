@@ -25,12 +25,13 @@ public class Sorts{
 
     /*Selection sort
    */
-  public static void selectionSort(int [] ary) {
+  public static void selectionSort(int[] ary) {
     /*Your implementation here!*/
     int ogValStart = 5;
     int minVal;
     int minIndex;
     for (int start = 0; start < ary.length; start++){
+      //System.out.println(Arrays.toString(ary));
       minVal = ary[start];
       minIndex = start;
       for (int i = start; i < ary.length; i++){
@@ -42,11 +43,11 @@ public class Sorts{
       ogValStart = ary[start];
       ary[start] = minVal;
       ary[minIndex] = ogValStart;
-      //System.out.println(Arrays.toString(ary));
+
     }
   }
 
-  public static void insertionSort(int[]data){
+  public static void insertionSort(int[] data){
   /*Your implementation here*/
     int key;
     for (int i = 1; i < data.length; i++){
@@ -78,7 +79,7 @@ public class Sorts{
   public static int[] randArray(int length, int start, int end){
     int[] rand = new int[length];
     for (int i = 0; i < rand.length; i++){
-      rand[i]=(int)(Math.random()*(end-start+1))+end;
+      rand[i]=(int)((Math.random() * (end - start)) + start);
     }
     return rand;
   }
@@ -113,6 +114,7 @@ public class Sorts{
     int[] dup = randArray(100, -5, 5);
     bubbleSort(dup);
     System.out.println("Bubble - Ary with Duplicates: " + checkSorted(dup));
+    System.out.println(Arrays.toString(dup));
 
     int[] noDup = randArray(300, 0, 10);
     bubbleSort(noDup);
@@ -123,11 +125,11 @@ public class Sorts{
     System.out.println("Bubble - Reverse Array: " + checkSorted(revSort));
     */
 
-    // int[] ex1 = {7, 5, 4, 2};
-    // selectionSort(ex1);
+    //int[] ex1 = {7, 5, 4, 2};
+    //selectionSort(ex1);
 
-    // int[] ex2 = {5, 1, 12, -5, 16, 2, 12, 14};
-    // selectionSort(ex2);
+    //int[] ex2 = {5, 1, 12, -5, 16, 2, 12, 14};
+    //selectionSort(ex2);
 
     /*
     int[] sizeZero = new int[0];
@@ -158,6 +160,7 @@ public class Sorts{
     selectionSort(revSort);
     System.out.println("Selection - Reverse Array: " + checkSorted(revSort));
     */
+
 
     int[] sizeZero = new int[0];
     insertionSort(sizeZero);
