@@ -9,14 +9,15 @@ public class WordSearch{
      *@param cols is the starting width of the WordSearch
      */
     public WordSearch(int rows,int cols){
-      char[][] board = new char[rows][cols];
+      char[][] data = new char[rows][cols];
+      this.clear();
     }
 
     /**Set all values in the WordSearch to underscores'_'*/
     private void clear(){
-      for (int i = 0; i < board.length(); i++){
-        for (int j = 0; j = board[i].length; j++){
-          board[i][j]= "_"
+      for (int i = 0; i < data.length; i++){
+        for (int j = 0; j < data[i].length; j++){
+          data[i][j]= '_';
         }
       }
     }
@@ -26,6 +27,14 @@ public class WordSearch{
      *separated by newlines.
      */
     public String toString(){
+      String str = "";
+      for (int i = 0; i < data.length; i++){
+        for (int j = 0; j < data[i].length; j++){
+          str += data[i][j] + " ";
+        }
+      str += "/n";
+      }
+      return str;
     }
 
 
@@ -41,6 +50,7 @@ public class WordSearch{
      * and the board is NOT modified.
      */
     public boolean addWordHorizontal(String word,int row, int col){
+      return false;
     }
 
 
@@ -56,5 +66,6 @@ public class WordSearch{
      *and the board is NOT modified.
      */
     public boolean addWordVertical(String word,int row, int col){
+      return false;
     }
 }
