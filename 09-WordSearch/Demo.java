@@ -1,5 +1,6 @@
 public class Demo {
   public static void main(String[] args){
+    /*
     WordSearch search1 = new WordSearch(3,5);
     System.out.println(search1); //empty word search
 
@@ -20,9 +21,13 @@ public class Demo {
 
     search1.addWordVertical("tes", 0, 2);
     System.out.println(search1); //does nothing (intersecting let is not the same)
+    */
 
     WordSearch board = new WordSearch(10,10);
-    board.addWordVertical("hello",1,1);
+    board.addWordDiagonal("hello",1,0); //should be added
+    board.addWordDiagonal("hell",7,0); //doesn't fit
+    board.addWordDiagonal("hel",7,0); //should be added
+    board.addWordHorizontal("hey",7, 0);
     System.out.println(board);
   }
 }
