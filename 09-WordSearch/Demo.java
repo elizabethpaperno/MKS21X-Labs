@@ -20,5 +20,9 @@ public class Demo {
 
     search1.addWordVertical("tes", 0, 2);
     System.out.println(search1); //does nothing (intersecting let is not the same)
+
+    WordSearch board = new WordSearch(10,10);
+    board.addWordVertical("hello",1,1);
+    System.out.println(board);
   }
 }
