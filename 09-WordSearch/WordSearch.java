@@ -127,5 +127,28 @@ public class WordSearch{
       return false;
     }
 
+    public boolean addWordSomewhere(int locRow, int locCol, int xDir, int yDir){
+      if (xDir == 0 || xDir < -1 || xDir > 1 || yDir == 0 || yDir < -1 || yDir > 1){
+        // if input is invalid
+        return false;
+      }
+      if (xDir == 0){
+        this.addWordVertical(locRow, locCol);
+        // later will be specificed backwards or forwards
+        // yDir == -1 -> add backwards addWordVertical
+        // yDir == 1 -> add forwards addWordVertical
+      } else if (yDir == 0){
+        this.addWordHorizontal(locRow, locCol);
+        // later will be specificed backwards or forwards
+        // xDir == -1 -> add backwards addWordHorizontal
+        // xDir == 1 -> add forwards addWordHorizontal
+      }else {
+        this.addWordDiagonal(locRow, locCol);
+        // later will be specificed backwards or forwards, left or right
+        // xDir ==  1 and yDir == 1-> add forwards to the right
+        // xDir ==  1 and yDir == -1-> add backwards to the right
+        // xDir ==  -1 and yDir == 1-> add forwards to the right
+      }
+    }
 
 }
