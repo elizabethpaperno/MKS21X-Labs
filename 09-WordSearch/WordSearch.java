@@ -43,7 +43,16 @@ public class WordSearch{
         data = new char[rows][cols];
         addAllWords();
     }
+    private void addAllWords() {
+      /*Attempt to add all of the words from the wordsToAdd list using the algorithm described above*/
+      File file = new File(fileName);
+      Scanner input = new Scanner(file);
+      new ArrayList<String>wordsToAdd = new rrayList(10);
+      while (input.hasNextLine()){
+         String str = input.nextLine();
 
+      }
+    }
     /**Set all values in the WordSearch to underscores'_'*/
     private void clear(){
       for (int i = 0; i < data.length; i++){
@@ -212,14 +221,5 @@ public class WordSearch{
         j += colInc;
       }
       return true;
-    }
-
-    private boolean addWord(String word,int row, int col, int rowInc, int colInc){
-      return false;
-    }
-
-
-    private void addAllWords() {
-      /*Attempt to add all of the words from the wordsToAdd list using the algorithm described above*/
     }
 }
