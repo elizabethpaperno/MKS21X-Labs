@@ -127,28 +127,30 @@ public class WordSearch{
       return false;
     }
 
-    public boolean addWordSomewhere(int locRow, int locCol, int xDir, int yDir){
-      if (xDir == 0 || xDir < -1 || xDir > 1 || yDir == 0 || yDir < -1 || yDir > 1){
+    public boolean addWord(int row, int col, String word, int rowInc, int colInc){
+      if ((rowInc == 0 && colInc == 0)|| rowInc < -1 || rowInc > 1 || colInc < -1 || colInc > 1){
         // if input is invalid
+        //System.out.println("invalid increment");
         return false;
       }
-      if (xDir == 0){
-        this.addWordVertical(locRow, locCol);
-        // later will be specificed backwards or forwards
-        // yDir == -1 -> add backwards addWordVertical
-        // yDir == 1 -> add forwards addWordVertical
-      } else if (yDir == 0){
-        this.addWordHorizontal(locRow, locCol);
-        // later will be specificed backwards or forwards
-        // xDir == -1 -> add backwards addWordHorizontal
-        // xDir == 1 -> add forwards addWordHorizontal
-      }else {
-        this.addWordDiagonal(locRow, locCol);
-        // later will be specificed backwards or forwards, left or right
-        // xDir ==  1 and yDir == 1-> add forwards to the right
-        // xDir ==  1 and yDir == -1-> add backwards to the right
-        // xDir ==  -1 and yDir == 1-> add forwards to the right
+      int xFit = row + (word.length() - 1) * colInc;
+      int yFit = col + (word.length() - 1) * rowInc;
+      if (!((xFit <= data[row].length && xFit >= 0) && (yFit <= data.length && yFit >= 0))){
+        System.out.println("doesn't fit");
+        return false;
       }
+      int i = row;
+      int j = col;
+      for(int x = 0; x < word.length(); x++){
+        if (data[i][j]== '_' || data[i][j] == word.charAt(x)){
+          //System.out.println(j + ", " + col);
+          data[i][j] = word.charAt(x);
+        } else {
+          return false;
+        }
+        i += colInc;
+        j += rowInc;
+      }
+      return true;
     }
-
 }
