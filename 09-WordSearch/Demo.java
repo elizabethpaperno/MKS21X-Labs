@@ -23,11 +23,19 @@ public class Demo {
     System.out.println(search1); //does nothing (intersecting let is not the same)
     */
 
+    /*
     WordSearch board = new WordSearch(10,10);
     board.addWordDiagonal("hello",1,0); //should be added
     board.addWordDiagonal("hell",7,0); //doesn't fit
     board.addWordDiagonal("hel",7,0); //should be added
     board.addWordHorizontal("hey",7, 0);
     System.out.println(board);
+    */
+    WordSearch board2 = new WordSearch(10,10);
+    board2.addWord(0,0, "hellooooo", 1, 0); //should be added
+    board2.addWord(1,9, "hellooooo", -1, 0); //should be added
+    board2.addWord(5,5, "hi", 0, -1); //should be added
+    board2.addWord(5,7, "li", -1, -1);
+    System.out.println(board2);
   }
 }
