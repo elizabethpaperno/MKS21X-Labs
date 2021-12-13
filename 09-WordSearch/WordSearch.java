@@ -125,25 +125,26 @@ public class WordSearch{
      * or there are overlapping letters that do not match, then false is returned
      * and the board is NOT modified.
      */
+
      /*
     public boolean addWordHorizontal(String word,int row, int col){
       int strIndex = 0;
-      if (data[row].length - col >= word.length()){
-        for (int j = col; j < word.length() + col; j++){
-          if (data[row][j]== '_' || data[row][j]== word.charAt(strIndex)){
-            //System.out.println(data[row][j]);
-            //System.out.println(word.charAt(strIndex));
-            data[row][j] = word.charAt(strIndex);
-            strIndex += 1;
-          }else {
-            return false;
-          }
-        }
-        return true;
+      if (!(data[row].length - col >= word.length())){
+        return false;
       }
-      return false;
+      for (int j = col; j < word.length() + col; j++){
+        if (!(data[row][j]== '_' || data[row][j]== word.charAt(strIndex))){
+          return false;
+        }
+      }
+      for (int j = col; j < word.length() + col; j++){
+          data[row][j] = word.charAt(strIndex);
+          strIndex += 1;
+      }
+      return true;
     }
     */
+
 
 
    /**Attempts to add a given word to the specified position of the WordGrid.
@@ -157,22 +158,26 @@ public class WordSearch{
      *or there are overlapping letters that do not match, then false is returned.
      *and the board is NOT modified.
      */
-    /*
+
+     /*
     public boolean addWordVertical(String word,int row, int col){
       int strIndex = 0;
-      if (data.length - row >= word.length()){
-        for (int j = row; j < word.length() + row; j++){
-          if (data[j][col]== '_' || data[j][col]== word.charAt(strIndex)){
-            //System.out.println(j + ", " + col);
-            data[j][col] = word.charAt(strIndex);
-            strIndex += 1;
-          } else {
-            return false;
-          }
-        }
-        return true;
+      if (!(data.length - row >= word.length())){
+        return false;
       }
-      return false;
+
+      for (int j = col; j < word.length() + col; j++){
+        if (!(data[row][j]== '_' || data[row][j]== word.charAt(strIndex))){
+          return false;
+        }
+      }
+
+      for (int j = row; j < word.length() + row; j++){
+          data[j][col] = word.charAt(strIndex);
+          strIndex += 1;
+      }
+
+      return true;
     }
     */
 
@@ -189,23 +194,31 @@ public class WordSearch{
      /*
     public boolean addWordDiagonal(String word,int row, int col){
       int strIndex = 0;
-      if (data.length - row >= word.length()){
-        int i = col;
-        int j = row;
-        while(j < word.length() + row){
-          if (data[j][i]== '_' || data[j][i]== word.charAt(strIndex)){
-            //System.out.println(j + ", " + col);
-            data[j][i] = word.charAt(strIndex);
-            strIndex += 1;
-            i++;
-            j++;
-          } else {
-            return false;
-          }
-        }
-        return true;
+      if (!(data.length - row >= word.length())){
+        return false;
       }
-      return false;
+
+      int iTest = row;
+      int jTest = col;
+      while(j < word.length() + row){
+        if (!(data[j][i]== '_' || data[j][i]== word.charAt(strIndex))){
+          return false;
+        }
+        iTest++;
+        jTest++;
+        strIndex++;
+      }
+
+      int i = col;
+      int j = row;
+      strIndex = 0;
+      while(j < word.length() + row){
+          data[j][i] = word.charAt(strIndex);
+          strIndex += 1;
+          i++;
+          j++;
+      }
+      return true;
     }
     */
 
