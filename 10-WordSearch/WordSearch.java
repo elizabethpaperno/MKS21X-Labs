@@ -1,110 +1,192 @@
 import java.util.*;
 import java.io.*;
+import java.util.*; //random, scanner, arraylist
+import java.io.*; //file, filenotfoundexception
 public class WordSearch{
-  private char[][] grid;
-  private ArrayList<String> wordsAdded;
-  private Random rng;
-  private int seed;
+    private char[][]data;
 
-  //assume a rectangular grid
-  private void addAllWords(String filename){
-    ArrayList<String> wordsToAdd = loadWordsFromFile(filename);
-    //You are writing this
+    //the random seed used to produce this WordSearch
+    private int seed;
 
-  }
+    //a random Object to unify your random calls
+    private Random randgen;
 
-  public WordSearch(int rows,int cols, String fileName){
-    rng = new Random();
-    seed = rng.nextInt();
-    rng = new Random(seed);
-    grid = new char[rows][cols];
-    clear();
-    wordsAdded = new ArrayList<String>();
-    addAllWords(fileName);
-  }
+    //all words that were successfully added get moved into wordsAdded.
+    private ArrayList<String>wordsAdded;
 
-  public WordSearch(int rows,int cols, String fileName, int s){
-    seed = s;
-    rng = new Random(seed);
-    grid = new char[rows][cols];
-    clear();
-    wordsAdded = new ArrayList<String>();
-    addAllWords(fileName);
-  }
+    private String fileName;
 
-  public static ArrayList<String> loadWordsFromFile(String fileName){
-    ArrayList<String>words = new ArrayList<String>();
-    try{
-      Scanner input = new Scanner(new File(fileName));
-      while(input.hasNextLine()){
-        String line = input.nextLine();
-        if(! line.equals("")){
-          words.add(line.toUpperCase());
+    /*New Constructors:  Both will read in the word text file, then run addAllWords().
+     *Do not fill in random letters after.*/
+
+    /**Initialize the grid to the size specified
+     *and fill all of the positions with '_'
+     *@param rows is the starting height of the WordSearch
+     *@param cols is the starting width of the WordSearch
+     */
+    public WordSearch(int rows,int cols){
+      data = new char[rows][cols];
+      this.clear();
+    }
+
+    /*New Constructors:  Both will read in the word text file, then run addAllWords().
+     *Do not fill in random letters after.*/
+     public WordSearch(int rows, int cols, String fileName, int randSeed){
+         //Use the random seed specified.
+         data = new char[rows][cols];
+         seed = randSeed;
+         randgen = new Random(seed);
+         this.fileName = fileName;
+         this.clear();
+         addAllWords();
+     }
+
+    public WordSearch(int rows, int cols, String fileName){
+        //Choose a randSeed using the clock random
+        data = new char[rows][cols];
+        randgen = new Random();
+        seed = randgen.nextInt();
+        this.fileName = fileName;
+        this.clear();
+        addAllWords();
+    }
+
+
+    private void addAllWords() {
+      /*Attempt to add all of the words from the file of words list using the algorithm described above
+       *Suggestion: read your file into an ArrayList of Strings. */
+      try {
+        File file = new File(fileName);
+        Scanner input = new Scanner(file);
+        int rowInc;
+        int colInc;
+        int col;
+        int row;
+        wordsAdded = new ArrayList<String>(10);
+        ArrayList<String> wordsToBeAdded = new ArrayList<String>(10);
+        while (input.hasNextLine()){
+           String str = input.nextLine();
+           wordsToBeAdded.add(str);
+           //System.out.println(wordsToBeAdded);
+           for (int tries = 0; tries < 100; tries++){
+             rowInc = randgen.nextInt(3)-1;
+             colInc = randgen.nextInt(3)-1;
+             row = randgen.nextInt(data[0].length);
+             col = randgen.nextInt(data.length);
+             //System.out.println(rowInc + ", " + colInc);
+             if (addWord(row, col, str, rowInc, colInc)){
+               wordsAdded.add(str);
+               break;
+             }
+           }
+        }
+      }catch (FileNotFoundException e) {
+        System.out.println("File not found");
+      }
+    }
+    /**Set all values in the WordSearch to underscores'_'*/
+    private void clear(){
+      for (int i = 0; i < data.length; i++){
+        for (int j = 0; j < data[i].length; j++){
+          data[i][j]= '_';
         }
       }
-    }catch(FileNotFoundException e){
-      System.out.println(e);
-      System.exit(1);
     }
-    return words;
-  }
 
-
-
-  private void clear(){
-    for(int r = 0; r < grid.length; r++){
-      for(int c = 0; c < grid[r].length; c++){
-        grid[r][c]='_';
+    /**Each row is a new line, there is a space between each letter
+     *@return a String with each character separated by spaces, and rows
+     *separated by newlines.
+     */
+    public String toString(){
+      String str = "";
+      for (int i = 0; i < data.length; i++){
+        for (int j = 0; j < data[i].length; j++){
+          str += data[i][j] + " ";
+        }
+      str += "\n";
       }
+      str += "\n";
+      str += "Words added: " + wordsAdded.toString();
+      str += "\n";
+      str += "Seed: " + seed;
+      return str;
     }
-  }
 
+    /**Attempts to add a given word to the specified position of the WordGrid.
+    *The word is added in the direction rowIncrement,colIncrement
+    *Words must have a corresponding letter to match any letters that it overlaps.
+    *
+    *@param word is any text to be added to the word grid.
+    *@param row is the vertical locaiton of where you want the word to start.
+    *@param col is the horizontal location of where you want the word to start.
+    *@param rowInc is -1,0, or 1 and represents the displacement of each letter in the row direction
+    *@param colInc is -1,0, or 1 and represents the displacement of each letter in the col direction
+    *@return true when: the word is added successfully.
+    *        false (and do not change the board at all) when any of the following happen:
+    *        a) rowInc and colInc are both 0,
+    *        b) the word doesn't fit,
+    *        c) there are overlapping letters that do not match
+    */
 
-  //precondition word grids are rectangular
-  private boolean inBounds(int r, int c){
-    return r >= 0 && r < grid.length && c >= 0 && c < grid[0].length;
-  }
-  public boolean addWord(String word,int row, int col, int dr, int dc){
-    //make sure there is some non 0 vector for direction
-    if(dr == 0 && dc == 0){
-      return false;
-    }
-    //check endpoints of word
-    if(!inBounds(row,col) || !inBounds(row + dr * (word.length() - 1), col + dc * (word.length() - 1 ))){
-      return false;
-    }
-    //check for conflicting letters
-    for(int i = 0; i < word.length(); i++){
-      char c = grid[row + i * dr][col + i * dc];
-      if(c != '_' && c != word.charAt(i)){
+    public boolean helper(int row, int col, String word, int rowInc, int colInc, boolean readOnly){
+      // checks if input is invalid
+      if (rowInc == 0 && colInc == 0){
+        System.out.println("invalid increment");
         return false;
       }
-    }
-    //change
-    for(int i = 0; i < word.length(); i++){
-      grid[row + i * dr][col + i * dc] = word.charAt(i);
-    }
-    wordsAdded.add(word);
-    return true;
-  }
 
-  public String toString(){
-    String ans = "";
-    for(int r = 0; r < grid.length; r++){
-      for(int c = 0; c < grid[r].length; c++){
-        ans += grid[r][c]+" ";
+      //check if word fits
+      int xFit = row + (word.length()-1) * rowInc;
+      int yFit = col + (word.length()-1) * colInc;
+
+      if (!((xFit < data[row].length && xFit >= 0) && (yFit < data.length && yFit >= 0))){
+        System.out.println("doesn't fit");
+        return false;
       }
-      ans+="\n";
+
+      //checks for incorrect overlap
+      int iTest = row;
+      int jTest = col;
+      for(int x = 0; x < word.length(); x++){
+        if (!(data[iTest][jTest]== '_' || data[iTest][jTest] == word.charAt(x))){
+          return false;
+        }
+        if (!readOnly){
+          data[iTest][jTest] = word.charAt(x);
+        }
+        iTest += rowInc;
+        jTest += colInc;
+      }
+      return true;
     }
-    ans += "words: ";
-    for(String word:wordsAdded){
-      ans+= word+" ";
+    public boolean addWord(int row, int col, String word, int rowInc, int colInc){
+      /*
+      int i = row;
+      int j = col;
+      for(int x = 0; x < word.length(); x++){
+        //System.out.println(j + ", " + col);
+        data[i][j] = word.charAt(x);
+        i += rowInc;
+        j += colInc;
+      }
+      return true;
+      */
+      if (!(helper(row, col, word, rowInc, colInc, true))){
+        return false;
+      }
+      return helper(row, col, word, rowInc, colInc, false);
+
     }
-    ans += "\nseed: "+seed;
-    return ans;
-  }
 
   public static void main(String[] args){
-
+    if (args.length() == 4){
+       Wordsearch search = new WordSearch(args[0], args[1], args[2]);
+       search.addAllWords();
+       System.out.println(search);
+    } else {
+        Wordsearch search = new WordSearch(args[0], args[1], args[2], args[3]);
+        search.addAllWords();
+        System.out.println(search);
+    }
   }
 }
