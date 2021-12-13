@@ -103,4 +103,8 @@ public class WordSearch{
     ans += "\nseed: "+seed;
     return ans;
   }
+
+  public static void main(String[] args){
+
+  }
 }
