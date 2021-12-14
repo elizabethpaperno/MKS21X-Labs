@@ -24,18 +24,20 @@ public class WordSearch{
      *@param rows is the starting height of the WordSearch
      *@param cols is the starting width of the WordSearch
      */
+     /*
     public WordSearch(int rows,int cols){
       data = new char[rows][cols];
       this.clear();
     }
+    */
 
     /*New Constructors:  Both will read in the word text file, then run addAllWords().
      *Do not fill in random letters after.*/
      public WordSearch(int rows, int cols, String fileName, int randSeed){
          //Use the random seed specified.
-         data = new char[rows][cols];
          seed = randSeed;
          randgen = new Random(seed);
+         data = new char[rows][cols];
          this.fileName = fileName;
          this.clear();
          addAllWords();
@@ -46,6 +48,7 @@ public class WordSearch{
         data = new char[rows][cols];
         randgen = new Random();
         seed = randgen.nextInt();
+        randgen = new Random(seed);
         this.fileName = fileName;
         this.clear();
         addAllWords();
@@ -65,7 +68,8 @@ public class WordSearch{
         wordsAdded = new ArrayList<String>(10);
         ArrayList<String> wordsToBeAdded = new ArrayList<String>(10);
         while (input.hasNextLine()){
-           String str = input.nextLine();
+           String str = input.nextLine().toUpperCase();
+           if (str != ""){
            wordsToBeAdded.add(str);
            //System.out.println(wordsToBeAdded);
            for (int tries = 0; tries < 100; tries++){
@@ -80,6 +84,7 @@ public class WordSearch{
                break;
              }
            }
+         }
         }
       }catch (FileNotFoundException e) {
         System.out.println("File not found");
