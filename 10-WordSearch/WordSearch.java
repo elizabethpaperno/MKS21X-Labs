@@ -76,6 +76,7 @@ public class WordSearch{
              //System.out.println(rowInc + ", " + colInc);
              if (addWord(row, col, str, rowInc, colInc)){
                wordsAdded.add(str);
+               wordsToBeAdded.remove(str);
                break;
              }
            }
@@ -131,7 +132,7 @@ public class WordSearch{
     public boolean helper(int row, int col, String word, int rowInc, int colInc, boolean readOnly){
       // checks if input is invalid
       if (rowInc == 0 && colInc == 0){
-        System.out.println("invalid increment");
+        //System.out.println("invalid increment");
         return false;
       }
 
@@ -140,7 +141,7 @@ public class WordSearch{
       int yFit = col + (word.length()-1) * colInc;
 
       if (!((xFit < data[row].length && xFit >= 0) && (yFit < data.length && yFit >= 0))){
-        System.out.println("doesn't fit");
+        //System.out.println("doesn't fit");
         return false;
       }
 
@@ -160,17 +161,6 @@ public class WordSearch{
       return true;
     }
     public boolean addWord(int row, int col, String word, int rowInc, int colInc){
-      /*
-      int i = row;
-      int j = col;
-      for(int x = 0; x < word.length(); x++){
-        //System.out.println(j + ", " + col);
-        data[i][j] = word.charAt(x);
-        i += rowInc;
-        j += colInc;
-      }
-      return true;
-      */
       if (!(helper(row, col, word, rowInc, colInc, true))){
         return false;
       }
@@ -178,15 +168,36 @@ public class WordSearch{
 
     }
 
+    private void fillLetters(){
+      for (int i = 0; i < data.length; i++){
+        for (int j = 0; j < data[i].length; j++){
+          if (data[i][j]== '_'){
+            data[i][j] = (char)('A'+ randgen.nextInt(26));
+          }
+        }
+      }
+    }
+
   public static void main(String[] args){
-    if (args.length() == 4){
-       Wordsearch search = new WordSearch(args[0], args[1], args[2]);
+    if (args.length == 4){
+       WordSearch search = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2]);
        search.addAllWords();
-       System.out.println(search);
+       if (Integer.parseInt(args[3]) == 1){
+         System.out.println(search);
+       } else {
+         search.fillLetters();
+         System.out.println(search);
+       }
     } else {
-        Wordsearch search = new WordSearch(args[0], args[1], args[2], args[3]);
+        WordSearch search = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2], Integer.parseInt(args[4]));
         search.addAllWords();
-        System.out.println(search);
+        //System.out.println(search);
+        if (Integer.parseInt(args[3]) == 1){
+          System.out.println(search);
+        } else {
+          search.fillLetters();
+          System.out.println(search);
+        }
     }
   }
 }
