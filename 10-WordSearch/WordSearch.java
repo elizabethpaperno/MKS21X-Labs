@@ -58,6 +58,7 @@ public class WordSearch{
     private void addAllWords() {
       /*Attempt to add all of the words from the file of words list using the algorithm described above
        *Suggestion: read your file into an ArrayList of Strings. */
+      //System.out.println("exec. addAllWords");
       try {
         File file = new File(fileName);
         Scanner input = new Scanner(file);
@@ -65,24 +66,24 @@ public class WordSearch{
         int colInc;
         int col;
         int row;
-        wordsAdded = new ArrayList<String>(10);
-        ArrayList<String> wordsToBeAdded = new ArrayList<String>(10);
+        wordsAdded = new ArrayList<String>();
+        ArrayList<String> wordsToBeAdded = new ArrayList<String>();
         while (input.hasNextLine()){
            String str = input.nextLine().toUpperCase();
            if (str != ""){
-           wordsToBeAdded.add(str);
-           //System.out.println(wordsToBeAdded);
-           for (int tries = 0; tries < 100; tries++){
-             rowInc = randgen.nextInt(3)-1;
-             colInc = randgen.nextInt(3)-1;
-             row = randgen.nextInt(data[0].length);
-             col = randgen.nextInt(data.length);
-             //System.out.println(rowInc + ", " + colInc);
-             if (addWord(row, col, str, rowInc, colInc)){
-               wordsAdded.add(str);
-               wordsToBeAdded.remove(str);
-               break;
-             }
+             wordsToBeAdded.add(str);
+             System.out.println(str);
+             for (int tries = 0; tries < 100; tries++){
+               rowInc = randgen.nextInt(3)-1;
+               colInc = randgen.nextInt(3)-1;
+               row = randgen.nextInt(data[0].length);
+               col = randgen.nextInt(data.length);
+               //System.out.println(rowInc + ", " + colInc);
+               if (addWord(row, col, str, rowInc, colInc)){
+                 wordsAdded.add(str);
+                 wordsToBeAdded.remove(str);
+                 break;
+               }
            }
          }
         }
@@ -173,7 +174,7 @@ public class WordSearch{
 
     }
 
-    private void fillLetters(){
+    private void fillInRandomLetters(){
       for (int i = 0; i < data.length; i++){
         for (int j = 0; j < data[i].length; j++){
           if (data[i][j]== '_'){
@@ -186,21 +187,19 @@ public class WordSearch{
   public static void main(String[] args){
     if (args.length == 4){
        WordSearch search = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2]);
-       search.addAllWords();
        if (Integer.parseInt(args[3]) == 1){
          System.out.println(search);
        } else {
-         search.fillLetters();
+         search.fillInRandomLetters();
          System.out.println(search);
        }
     } else {
         WordSearch search = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2], Integer.parseInt(args[4]));
-        search.addAllWords();
         //System.out.println(search);
         if (Integer.parseInt(args[3]) == 1){
           System.out.println(search);
         } else {
-          search.fillLetters();
+          search.fillInRandomLetters();
           System.out.println(search);
         }
     }
