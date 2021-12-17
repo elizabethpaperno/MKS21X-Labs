@@ -5,27 +5,31 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     super();
   }
 
+  @Override
   public boolean add(T element){
     if (element == null){
-      return false;
       throw new IllegalArgumentException("Cannot add null object");
+      //return false;
     }
-    this.add(element);
+    super.add(element);
     return true;
   }
+
+  @Override
   public void add(int index, T element){
     if (element == null){
       throw new IllegalArgumentException("Cannot add null object");
     }
-    this.add(index, element);
+    super.add(index, element);
   }
 
+  @Override
   public T set(int index, T element){
     if (element == null){
-      return element;
       throw new IllegalArgumentException("Cannot set element to null object");
+      //return element;
     }
-    this.set(index, element);
+    super.set(index, element);
     return element;
   }
 }
