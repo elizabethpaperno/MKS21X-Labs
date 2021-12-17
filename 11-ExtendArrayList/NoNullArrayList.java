@@ -5,6 +5,10 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     super();
   }
 
+  public NoNullArrayList(startingCapacity){
+    super(startingCapacity);
+  }
+
   @Override
   public boolean add(T element){
     if (element == null){
