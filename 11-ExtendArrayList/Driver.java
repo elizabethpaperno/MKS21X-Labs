@@ -26,5 +26,10 @@ public class Driver{
       System.out.println("add null to position caught");
     }
 
+    OrderedArrayList ord1 = new OrderedArrayList();
+    ord1.add("apple");
+    ord1.add("bat");
+    ord1.add("rat");
+    ord1.add("cat");
   }
 }

@@ -1,4 +1,4 @@
-OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
+public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
   public OrderedArrayList(){
     super();
   }
@@ -10,12 +10,17 @@ OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
   private int whereToPlace(T value){
     /*return the index that the value should be placed
     when inserting into the OrderedArrayList .*/
-
-    return 0;
+    for (int i=size(); i >= 0; i--){
+      if (value.compareTo(get(i))>= 0){
+        return i;
+      }
+    }
+    return size() - 1;
   }
 
   public boolean add(T element){
-
+    int pos = whereToPlace(element);
+    super.add(element, pos);
     return true;
   }
 
