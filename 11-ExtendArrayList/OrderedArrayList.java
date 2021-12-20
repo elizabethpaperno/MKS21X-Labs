@@ -26,7 +26,7 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   public boolean add(T element){
     int pos = whereToPlace(element);
-    return super.add(element, pos);
+    return super.add(pos, element);
   }
 
   public void add(int index, T element){

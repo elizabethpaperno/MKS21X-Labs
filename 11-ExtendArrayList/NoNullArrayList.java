@@ -5,7 +5,7 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     super();
   }
 
-  public NoNullArrayList(startingCapacity){
+  public NoNullArrayList(int startingCapacity){
     super(startingCapacity);
   }
 

@@ -31,5 +31,6 @@ public class Driver{
     ord1.add("bat");
     ord1.add("rat");
     ord1.add("cat");
+    System.out.println(ord1);
   }
 }
