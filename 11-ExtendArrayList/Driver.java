@@ -26,12 +26,14 @@ public class Driver{
       System.out.println("add null to position caught");
     }
 
-    OrderedArrayList ord1 = new OrderedArrayList();
+    OrderedArrayList ord1 = new OrderedArrayList(10);
     System.out.println("adding stuff");
     ord1.add("apple");
     ord1.add("bat");
     ord1.add("rat");
     ord1.add("cat");
-    System.out.println(ord1);
+    System.out.println(ord1); //[apple, bat, cat, rat]
+    System.out.println(ord1.set(0, "happy")); //apple
+    System.out.println(ord1);//[bat, cat, happy, rat]
   }
 }
