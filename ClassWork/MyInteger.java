@@ -7,10 +7,15 @@ public class MyInteger {
       for (int i = 0; i < s.length(); i++){
         finalNum += valueOfDigit(s.charAt(i)) * digit;
         digit /= 10;
+        System.out.println(finalNum);
       }
       return finalNum;
   }
   public static int valueOfDigit(char c){
-    return (int(c))
+    return ((int) (c - '0'));
+  }
+  public static void main(String[] args){
+    System.out.println(stringToInt("123"));
+
   }
 }
