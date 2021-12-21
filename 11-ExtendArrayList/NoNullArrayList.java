@@ -33,7 +33,8 @@ public class NoNullArrayList<T> extends ArrayList<T> {
       throw new IllegalArgumentException("Cannot set element to null object");
       //return element;
     }
+    T returnVal = this.get(index); //returns old element
     super.set(index, element);
-    return element;
+    return returnVal;
   }
 }

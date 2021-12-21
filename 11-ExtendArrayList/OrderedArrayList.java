@@ -10,23 +10,25 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   private int whereToPlace(T value){
     /*return the index that the value should be placed
     when inserting into the OrderedArrayList .*/
-    /*
-    let it crash correctly on its own
+
+    //let it crash correctly on its own
     if (value == null){
-      throw new IllegalArgumentException("Cannot add null object");
+      return 0;
     }
-    */
-    for (int i=size(); i >= 0; i--){
-      if (value.compareTo(get(i))>= 0){
-        return i;
+    for (int i=size() - 1; i >= 0; i--){
+      if (value.compareTo(get(i)) >= 0){
+        return i + 1;
       }
     }
-    return size() - 1;
+    return 0;
   }
 
   public boolean add(T element){
     int pos = whereToPlace(element);
-    return super.add(pos, element);
+    System.out.println(pos);
+    super.add(pos, element);
+    System.out.println(this);
+    return true;
   }
 
   public void add(int index, T element){
@@ -35,8 +37,9 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   public T set(int index, T element){
     int pos = whereToPlace(element);
+    T returnVal = this.get(index);
     this.remove(index);
-    this.add(pos, element);
-    return element;
+    super.add(pos, element);
+    return returnVal;
   }
 }

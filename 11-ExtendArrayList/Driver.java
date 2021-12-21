@@ -27,6 +27,7 @@ public class Driver{
     }
 
     OrderedArrayList ord1 = new OrderedArrayList();
+    System.out.println("adding stuff");
     ord1.add("apple");
     ord1.add("bat");
     ord1.add("rat");
