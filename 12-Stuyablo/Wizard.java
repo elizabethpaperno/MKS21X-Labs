@@ -12,14 +12,17 @@ public class Wizard extends Adventurer {
 
     public Wizard(String name, int powerLevel){
       super(name,30+(int)(Math.random()*10));
-      setPowerLevel(powerLeve);
+      setPowerLevel(powerLevel);
       setHasStaff(false);
     }
 
     //warrior methods
 
     public void attack(Damageable other){
-    	  int damage = (int)(Math.random()*20)+1;
+    	 int damage = (int)(Math.random()*30)+1;
+       if (getHasStaff()){
+         damage *= 2;
+       }
 
     }
 
@@ -33,6 +36,9 @@ public class Wizard extends Adventurer {
 	     return powerLevel;
     }
 
+    public int getHasStaff(){
+	     return hasStaff;
+    }
     //set methods
     public void setPowerLevel(int p){
 	     this.powerLevel = p;
