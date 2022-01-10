@@ -11,9 +11,12 @@ public class Wizard extends Adventurer {
     }
 
     public Wizard(String name, int powerLevel){
-      super(name,30+(int)(Math.random()*10));
+      super(name,100+(int)(Math.random()*10));
       setPowerLevel(powerLevel);
       setHasStaff(false);
+      //setAttacks(0);
+      System.out.println("For a wizard to have a staff, it must reach a powerLevel of 10. A staff gives you 1.5X damage on all regular attacks, and allows you to perform the special attack.");
+      System.out.println("A wizard upgrades a level when it performs a regulat attack ONLY.");
     }
 
     //warrior methods
@@ -21,9 +24,13 @@ public class Wizard extends Adventurer {
     public void attack(Damageable other){
     	 int damage = (int)(Math.random()*30)+1;
        if (getHasStaff()){
-         damage *= 2;
+         damage *= 1.5;
        }
-
+       other.applyDamage(damage);
+       setPowerLevel(getPowerLevel() + 1);
+       System.out.println(this + " attacks " + other + " for " + damage + " damage! ");
+       //System.out.println(this + ": " + getHP() + " HP");
+       //System.out.println(other + ": " + getHP() + " HP");
     }
 
     public void specialAttack(Damageable other){
@@ -36,7 +43,7 @@ public class Wizard extends Adventurer {
 	     return powerLevel;
     }
 
-    public int getHasStaff(){
+    public boolean getHasStaff(){
 	     return hasStaff;
     }
     //set methods
@@ -44,8 +51,12 @@ public class Wizard extends Adventurer {
 	     this.powerLevel = p;
     }
 
-    public void setHasStaff(boolean staff){
-	     this.hasStaff = staff;
+    private void setHasStaff(boolean staff){
+      if (staff && getPowerLevel() >= 10){
+	     this.hasStaff = true;
+     } else {
+       this.hasStaff = false;
+     }
     }
 
 
