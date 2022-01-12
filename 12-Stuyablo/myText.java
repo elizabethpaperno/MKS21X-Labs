@@ -29,7 +29,7 @@ public class myText{
     }
   }
 
-  public static void drawBoarderAndNums(){
+  public static int[] drawBoarderAndNums(int[] arr){
     Text.go(1,1);
     System.out.print(Text.colorize(createEmpty(80), Text.CYAN+Text.BACKGROUND));
 
@@ -46,33 +46,41 @@ public class myText{
     Text.go(31,1);
 
     //top row
-    int[] randArr = createRandArr();
     String nums = "";
     Text.go(1,2);
-    String num1 = getColorString(randArr[0]);
+    String num1 = getColorString(arr[0]);
     System.out.print(num1);
     Text.go(1,28);
-    String num2 = getColorString(randArr[1]);
+    String num2 = getColorString(arr[1]);
     System.out.print(num2);
     Text.go(1,54);
-    String num3 = getColorString(randArr[2]);
+    String num3 = getColorString(arr[2]);
     System.out.print(num3);
     Text.go(1,78);
-    String num4 = getColorString(randArr[3]);
+    String num4 = getColorString(arr[3]);
     System.out.println(num4);
 
     Text.go(31,1);
+
+    return arr;
   }
-  public static void userInput(){
-    System.out.println(">");
+  public static void userInput(int[] ogArr){
+
     Scanner input = new Scanner(System.in);
     String inStr = input.nextLine();
-    while (inStr != "q" || inStr != "quit"){
+    System.out.print(">");
+
+    while (!inStr.equals("q")&& !inStr.equals("quit")){
       if (inStr == ""){
         Text.clear();
+        drawBoarderAndNums(ogArr);
       }else {
-        drawBoarderAndNums();
+        Text.clear();
+        Text.go(1,1);
+        drawBoarderAndNums(createRandArr());
       }
+      System.out.print(">");
+      inStr = input.nextLine();
     }
     input.close();
   }
@@ -80,7 +88,10 @@ public class myText{
     //setup
     Text.hideCursor();
     Text.clear();
-    drawBoarderAndNums();
-
+    int[] randArr = createRandArr();
+    int[] ogArr = drawBoarderAndNums(randArr);
+    Text.showCursor();
+    userInput(ogArr);
+    Text.reset();
   }
 }
