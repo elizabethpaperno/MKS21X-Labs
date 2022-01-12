@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class myText{
   public static String createEmpty(int len){
     String myStr = "";
@@ -17,6 +19,7 @@ public class myText{
   }
 
   public static String getColorString(int num){
+    //String str = String.format("%2s", num + "");
     if (num < 25){
       return Text.colorize("" + num, Text.RED);
     } else if (num > 75){
@@ -25,19 +28,17 @@ public class myText{
       return Text.colorize("" + num, Text.WHITE);
     }
   }
-  public static void main(String[] args){
-    //setup
-    Text.hideCursor();
-    Text.clear();
+
+  public static void drawBoarderAndNums(){
     Text.go(1,1);
     System.out.print(Text.colorize(createEmpty(80), Text.CYAN+Text.BACKGROUND));
 
     //border
     for (int i = 2; i <= 29; i++){
       Text.go(i,1);
-      System.out.print(Text.colorize(createEmpty(1), Text.WHITE+Text.BACKGROUND));
+      System.out.print(Text.colorize(createEmpty(1), Text.CYAN+Text.BACKGROUND));
       Text.go(i,80);
-      System.out.print(Text.colorize(createEmpty(1), Text.WHITE+Text.BACKGROUND));
+      System.out.print(Text.colorize(createEmpty(1), Text.CYAN+Text.BACKGROUND));
     }
 
     Text.go(30,1);
@@ -61,5 +62,25 @@ public class myText{
     System.out.println(num4);
 
     Text.go(31,1);
+  }
+  public static void userInput(){
+    System.out.println(">");
+    Scanner input = new Scanner(System.in);
+    String inStr = input.nextLine();
+    while (inStr != "q" || inStr != "quit"){
+      if (inStr == ""){
+        Text.clear();
+      }else {
+        drawBoarderAndNums();
+      }
+    }
+    input.close();
+  }
+  public static void main(String[] args){
+    //setup
+    Text.hideCursor();
+    Text.clear();
+    drawBoarderAndNums();
+
   }
 }
