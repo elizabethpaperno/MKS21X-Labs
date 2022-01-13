@@ -12,9 +12,15 @@ public class StuyabloGame{
   //Display a List of 1-4 adventurers on the rows row through row+3 (4 rows max)
   //Should include Name and HP on 2 separate lines. (more to be added later)
   public static void drawParty(ArrayList<Adventurer> party,int startRow){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    int num = party.size();
+    int gap = (WIDTH - 2)/num;
+
+    for (int i = 0; i < num; i++){
+      Text.go(startRow, ); //figure out
+      System.out.print(party.get(i));
+      Text.go (startRow + 1, ); //figureout
+      System.out.print(party.get(i).getHP());
+    }
   }
 
   //Display a line of text starting at column 2 of the specified row.
@@ -28,16 +34,16 @@ public class StuyabloGame{
     System.out.print(Text.colorize(Game.createEmpty(80), Text.BORDER_BACKGROUND+Text.BACKGROUND));
 
     //border
-    for (int i = 2; i <= HEIGHT - 1; i++){
+    for (int i = 2; i <= HEIGHT; i++){
       Text.go(i,1);
       System.out.print(Text.colorize(Game.createEmpty(1), Text.BORDER_BACKGROUND+Text.BACKGROUND));
       Text.go(i,WIDTH);
       System.out.print(Text.colorize(Game.createEmpty(1), Text.BORDER_BACKGROUND+Text.BACKGROUND));
     }
 
-    Text.go(HEIGHT,1);
-    System.out.println(Text.colorize(Game.createEmpty(80), Text.BORDER_BACKGROUND+Text.BACKGROUND));
     Text.go(HEIGHT + 1,1);
+    System.out.println(Text.colorize(Game.createEmpty(80), Text.BORDER_BACKGROUND+Text.BACKGROUND));
+    Text.go(HEIGHT + 2,1);
   }
 
 
