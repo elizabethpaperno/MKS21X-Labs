@@ -19,9 +19,8 @@ public class StuyabloGame{
 
   //Display a line of text starting at column 2 of the specified row.
   public static void drawText(String s,int startRow){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Text.go(startRow, 2);
+    System.out.print(s);
   }
 
   public static void drawScreen(){
@@ -52,16 +51,18 @@ public class StuyabloGame{
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1 enemy to it.
     ArrayList<Adventurer>enemies = new ArrayList<>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Adventurer enemy = new Warrior("Agnar", "GRRRR");
+    enemies.add(enemy);
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 3 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Adventurer wiz1 = new Wizard ("Harry");
+    Adventurer wiz2 = new Wizard ("Ron");
+    Adventurer wiz3 = new Wizard ("Hermonie");
+    party.add(wiz1);
+    party.add(wiz2);
+    party.add(wiz3);
 
     //Main loop
     boolean partyTurn = false;
