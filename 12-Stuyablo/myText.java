@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class myText{
+public class Game{
   public static String createEmpty(int len){
     String myStr = "";
     for (int i = 0; i < len; i++){
@@ -64,20 +64,22 @@ public class myText{
 
     return arr;
   }
-  public static void userInput(int[] ogArr){
+  public static void userInput(){
+    int[] randArr = createRandArr();
+    int[] prevArr = drawBoarderAndNums(randArr);
 
+    System.out.print(">");
     Scanner input = new Scanner(System.in);
     String inStr = input.nextLine();
-    System.out.print(">");
 
     while (!inStr.equals("q")&& !inStr.equals("quit")){
       if (inStr == ""){
         Text.clear();
-        drawBoarderAndNums(ogArr);
+        drawBoarderAndNums(prevArr);
       }else {
         Text.clear();
         Text.go(1,1);
-        drawBoarderAndNums(createRandArr());
+        prevArr = drawBoarderAndNums(createRandArr());
       }
       System.out.print(">");
       inStr = input.nextLine();
@@ -88,10 +90,8 @@ public class myText{
     //setup
     Text.hideCursor();
     Text.clear();
-    int[] randArr = createRandArr();
-    int[] ogArr = drawBoarderAndNums(randArr);
     Text.showCursor();
-    userInput(ogArr);
+    userInput();
     Text.reset();
   }
 }
