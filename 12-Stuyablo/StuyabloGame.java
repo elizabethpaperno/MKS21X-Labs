@@ -2,11 +2,12 @@ import java.util.*;
 public class StuyabloGame{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.BLACK;
-  private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  private static final int BORDER_COLOR = Text.CYAN;
+  private static final int BORDER_BACKGROUND = Text.CYAN + Text.BACKGROUND;
 
   public static void main(String[] args) {
     run();
+    //drawScreen();
   }
 
   //Display a List of 1-4 adventurers on the rows row through row+3 (4 rows max)
@@ -16,9 +17,9 @@ public class StuyabloGame{
     int gap = (WIDTH - 2)/num;
 
     for (int i = 0; i < num; i++){
-      Text.go(startRow, ); //figure out
+      Text.go(startRow, 2 + i * gap); //figure out
       System.out.print(party.get(i));
-      Text.go (startRow + 1, ); //figureout
+      Text.go (startRow + 1, 2 + i * gap); //figureout
       System.out.print(party.get(i).getHP());
     }
   }
@@ -30,20 +31,22 @@ public class StuyabloGame{
   }
 
   public static void drawScreen(){
+    Text.clear();
     Text.go(1,1);
-    System.out.print(Text.colorize(Game.createEmpty(80), Text.BORDER_BACKGROUND+Text.BACKGROUND));
+    System.out.print(Text.colorize(Game.createEmpty(WIDTH), BORDER_BACKGROUND));
 
     //border
-    for (int i = 2; i <= HEIGHT; i++){
+
+    for (int i = 2; i < HEIGHT - 1; i++){
       Text.go(i,1);
-      System.out.print(Text.colorize(Game.createEmpty(1), Text.BORDER_BACKGROUND+Text.BACKGROUND));
+      System.out.print(Text.colorize(Game.createEmpty(1), BORDER_BACKGROUND));
       Text.go(i,WIDTH);
-      System.out.print(Text.colorize(Game.createEmpty(1), Text.BORDER_BACKGROUND+Text.BACKGROUND));
+      System.out.print(Text.colorize(Game.createEmpty(1), BORDER_BACKGROUND));
     }
 
+    Text.go(HEIGHT,1);
+    System.out.println(Text.colorize(Game.createEmpty(80), BORDER_BACKGROUND));
     Text.go(HEIGHT + 1,1);
-    System.out.println(Text.colorize(Game.createEmpty(80), Text.BORDER_BACKGROUND+Text.BACKGROUND));
-    Text.go(HEIGHT + 2,1);
   }
 
 
@@ -56,13 +59,13 @@ public class StuyabloGame{
 
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1 enemy to it.
-    ArrayList<Adventurer>enemies = new ArrayList<>();
-    Adventurer enemy = new Warrior("Agnar", "GRRRR");
+    ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
+    Adventurer enemy = new Warrior("Agnar", "GRRRR",50);
     enemies.add(enemy);
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 3 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     Adventurer wiz1 = new Wizard ("Harry");
     Adventurer wiz2 = new Wizard ("Ron");
     Adventurer wiz3 = new Wizard ("Hermonie");
@@ -88,14 +91,12 @@ public class StuyabloGame{
       if(partyTurn){
         //Process user input:
         if(input.equals("attack")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          party.get(whichPlayer).attack(enemies.get(0));
+          //drawText((party.get(whichPlayer) + " attacks "+ enemies.get(0)),10);
         }
         else if(input.equals("special")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          party.get(whichPlayer).attack(enemies.get(0));
+          //drawText((party.get(whichPlayer) + " special attacks "+ enemies.get(0)),10);
         }
         whichPlayer++;
 
@@ -112,10 +113,15 @@ public class StuyabloGame{
         //this block ignores user input!
         //display enemy attack except on turn 0.
         if(turn > 0){
-          //Enemy action choices go here!
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          int choice = (int)(Math.random() * 2);
+          int i = (int)(Math.random()*party.size());
+          if (choice == 0){
+            enemy.attack(party.get(i));
+            //drawText((enemy + " attacks "+ party.get(i)),HEIGHT/2);
+          }else if (choice == 1){
+            enemy.specialAttack(party.get(i));
+            //drawText((enemy + " special attacks "+ party.get(i)),HEIGHT/2);
+          }
         }
 
         //after enemy goes, change back to player's turn.
@@ -131,7 +137,7 @@ public class StuyabloGame{
 
       //display current state of all Adventurers
       drawParty(party,2);
-      drawParty(enemies,HEIGHT-5);
+      drawParty(enemies,25);
 
       //Draw the prompt
       Text.reset();
