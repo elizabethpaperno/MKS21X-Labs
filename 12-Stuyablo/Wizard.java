@@ -19,8 +19,8 @@ public class Wizard extends Adventurer {
       }
       setHasStaff(false);
       //setAttacks(0);
-      System.out.println("For a wizard to have a staff, it must reach a powerLevel of 10. A staff gives you 1.5X damage on all regular attacks, and allows you to perform the special attack.");
-      System.out.println("A wizard upgrades a level when it performs a regular attack ONLY.");
+      //System.out.println("For a wizard to have a staff, it must reach a powerLevel of 10. A staff gives you 1.5X damage on all regular attacks, and allows you to perform the special attack.");
+      //System.out.println("A wizard upgrades a level when it performs a regular attack ONLY.");
     }
 
     //warrior methods
