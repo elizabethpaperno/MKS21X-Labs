@@ -15,6 +15,7 @@ public abstract class Adventurer implements Damageable{
     public Adventurer(String name, int hp){
        this.name = name;
        this.HP = hp;
+       this.maxHP = hp;
     }
 
     //toString method
