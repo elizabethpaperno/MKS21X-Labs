@@ -37,7 +37,7 @@ public class Warrior extends Adventurer {
              + other + " for " + damage + " damage! "+warcry);
             setRage(getRage() - 10);
 	    }else{
-			    System.out.println("Not enough rage! ");
+			    return ("Not enough rage! ");
           attack(other);
 	    }
     }

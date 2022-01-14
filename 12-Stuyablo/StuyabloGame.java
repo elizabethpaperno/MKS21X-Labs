@@ -19,8 +19,21 @@ public class StuyabloGame{
     for (int i = 0; i < num; i++){
       Text.go(startRow, 2 + i * gap); //figure out
       System.out.print(party.get(i));
-      Text.go (startRow + 1, 2 + i * gap); //figureout
-      System.out.print(party.get(i).getHP());
+      Text.go(startRow + 1, 2 + i * gap); //figureout
+      System.out.print(getCorrectColor("HP: " + party.get(i).getHP() + party.get(i).getmaxHP(), party.get(i).getHP(), party.get(i).getmaxHP()));
+      Text.go(startRow + 2, 2 + i * gap);
+      System.out.print(getCorrectColor(party.get(i).getSpecialName() + party.get(i).getSpecial() + party.get(i).getSpecialMax(), party.get(i).getSpecial(), party.get(i).getSpecialMax()));
+    }
+  }
+
+  public static getCorrectColor(String s, int val, int max){
+    double percent = (val * 1.0)/(max * 1.0) * 100;
+    if (percent < 25){
+      return Text.colorize(s, Text.RED);
+    } else if (num > 75){
+      return Text.colorize(s, Text.GREEN);
+    } else {
+      return Text.colorize(s, Text.WHITE);
     }
   }
 
