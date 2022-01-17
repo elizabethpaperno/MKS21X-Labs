@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Game{
-  public static String createEmpty(int len){
+  public static String createStr(String str, int len){
     String myStr = "";
     for (int i = 0; i < len; i++){
-      myStr += " ";
+      myStr += str;
     }
     return myStr;
   }
@@ -31,32 +31,32 @@ public class Game{
 
   public static int[] drawBoarderAndNums(int[] arr){
     Text.go(1,1);
-    System.out.print(Text.colorize(createEmpty(80), Text.CYAN+Text.BACKGROUND));
+    System.out.print(Text.colorize("*" + createStr("-",78) + "*", Text.WHITE, Text.CYAN+Text.BACKGROUND));
 
     //border
     for (int i = 2; i <= 29; i++){
       Text.go(i,1);
-      System.out.print(Text.colorize(createEmpty(1), Text.CYAN+Text.BACKGROUND));
+      System.out.print(Text.colorize(createStr("|",1), Text.WHITE, Text.CYAN+Text.BACKGROUND));
       Text.go(i,80);
-      System.out.print(Text.colorize(createEmpty(1), Text.CYAN+Text.BACKGROUND));
+      System.out.print(Text.colorize(createStr("|",1), Text.WHITE, Text.CYAN+Text.BACKGROUND));
     }
 
     Text.go(30,1);
-    System.out.println(Text.colorize(createEmpty(80), Text.CYAN+Text.BACKGROUND));
+    System.out.print(Text.colorize("*" + createStr("-",78) + "*", Text.WHITE, Text.CYAN+Text.BACKGROUND));
     Text.go(31,1);
 
     //top row
     String nums = "";
-    Text.go(1,2);
+    Text.go(2,2);
     String num1 = getColorString(arr[0]);
     System.out.print(num1);
-    Text.go(1,28);
+    Text.go(2,28);
     String num2 = getColorString(arr[1]);
     System.out.print(num2);
-    Text.go(1,54);
+    Text.go(2,54);
     String num3 = getColorString(arr[2]);
     System.out.print(num3);
-    Text.go(1,78);
+    Text.go(2,78);
     String num4 = getColorString(arr[3]);
     System.out.println(num4);
 

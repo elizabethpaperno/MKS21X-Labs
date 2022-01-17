@@ -1,6 +1,6 @@
 public class Wizard extends Adventurer {
     private int powerLevel;
-    private in plMax;
+    private int plMax;
     private boolean hasStaff;
 
     public Wizard(){
@@ -19,7 +19,7 @@ public class Wizard extends Adventurer {
         setPowerLevel(5);
       }
       setHasStaff(false);
-      this.plMax = 10; 
+      this.plMax = 10;
       //setAttacks(0);
       //System.out.println("For a wizard to have a staff, it must reach a powerLevel of 10. A staff gives you 1.5X damage on all regular attacks, and allows you to perform the special attack.");
       //System.out.println("A wizard upgrades a level when it performs a regular attack ONLY.");
@@ -33,23 +33,24 @@ public class Wizard extends Adventurer {
          damage *= 1.5;
        }
        other.applyDamage(damage);
-       if (getPowerLevel < 10) {
+       if (getPowerLevel() < 10) {
          setPowerLevel(getPowerLevel() + 1);
+       }
+       if (!hasStaff){
+         updateHasStaff();
        }
        return (this + " attacks " + other + " for " + damage + " damage!");
        //System.out.println(this + ": " + getHP() + " HP");
        //System.out.println(other + ": " + getHP() + " HP");
-       if (!hasStaff){
-         updateHasStaff();
-       }
     }
 
-    public void specialAttack(Damageable other){
+    public String specialAttack(Damageable other){
       if (hasStaff){
         int damage = (int)(30 + Math.random()*50)+1;
+        other.applyDamage(damage);
         return(this + " curses " + other + " for " + damage + " damage!");
       }else{
-        System.out.println(this + " must have a staff (PL >= 10) for it to perform the special attack.");
+        return (this + " must have a staff (PL >= 10) for it to perform the special attack.");
       }
     }
 
@@ -73,21 +74,21 @@ public class Wizard extends Adventurer {
     private void setHasStaff(boolean staff){
       if (staff && getPowerLevel() >= 10){
 	     this.hasStaff = true;
-       System.out.println(this + " now has a staff");
+       //System.out.println(this + " now has a staff");
      } else {
        this.hasStaff = false;
      }
     }
     //return the name of the special resource the class uses
-    public static String getSpecialName(){
+    public String getSpecialName(){
       return "PL";
     }
 
     //return the value of the current and maximum special resource
-    public static int getSpecial(){
+    public int getSpecial(){
         return getPowerLevel();
     }
-    public abstract int getSpecialMax(){
+    public int getSpecialMax(){
         return plMax;
     }
 }
